@@ -3,8 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.DB4OUtil;
-import Business1.ConfigureASystem;
-import Business1.Ecosystem;
+import Business.ConfigureASystem;
+import Business.Ecosystem;
 import java.nio.file.Paths;
 import com.db4o.Db4oEmbedded;
 import com.db4o.ObjectContainer;

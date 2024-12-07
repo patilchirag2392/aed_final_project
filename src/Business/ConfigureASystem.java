@@ -2,10 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Business1;
-import Business1.Employee.Employee;
-import Business1.Role.SystemAdminRole;
-import Business1.UserAccount.UserAccount;
+package Business;
+import Business.Employee.Employee;
+import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccount;
 
 /**
  *

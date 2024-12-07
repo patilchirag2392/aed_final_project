@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Business1;
+package Business;
 
-import Business1.Enterprise.Enterprise;
-import Business1.Network.Network;
-import Business1.Organization.Organization;
-import Business1.Role.Role;
-import Business1.Role.SystemAdminRole;
-import Business1.UserAccount.UserAccount;
+import Business.Enterprise.Enterprise;
+import Business.Network.Network;
+import Business.Organization.Organization;
+import Business.Role.Role;
+import Business.Role.SystemAdminRole;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 import java.util.HashSet;
 
