@@ -258,7 +258,7 @@
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                           <Font name="Adelle Sans Devanagari" size="36" style="1"/>
                         </Property>
-                        <Property name="text" type="java.lang.String" value="DISASTER   MANAGEMENT   SYSTEM"/>
+                        <Property name="text" type="java.lang.String" value="DISASTER MANAGEMENT SYSTEM"/>
                       </Properties>
                     </Component>
                   </SubComponents>

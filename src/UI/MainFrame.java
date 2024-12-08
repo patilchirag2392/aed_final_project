@@ -156,7 +156,7 @@ public class MainFrame extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel3.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 36)); // NOI18N
-        jLabel3.setText("DISASTER   MANAGEMENT   SYSTEM");
+        jLabel3.setText("DISASTER MANAGEMENT SYSTEM");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
