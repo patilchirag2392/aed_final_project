@@ -3,8 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package UI;
+
 import Business.Ecosystem;
-import Business.DB40Util.DB4OUtil;
+import Business.DB4OUtil.DB4OUtil;
 import Business.Organization.Organization;
 import Business.UserAccount.UserAccount;
 import Business.Enterprise.Enterprise;
@@ -15,7 +16,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author sej
+ * @author chiragpatil
  */
 public class MainFrame extends javax.swing.JFrame {
 
@@ -23,10 +24,11 @@ public class MainFrame extends javax.swing.JFrame {
      * Creates new form MainFrame
      */
     private Ecosystem ecosystem;
-    private DB4OUtil db4oUtil=DB4OUtil.getInstance();
+    private DB4OUtil db4oUtil = DB4OUtil.getInstance();
+
     public MainFrame() {
         initComponents();
-        ecosystem=db4oUtil.retrieveSystem();
+        ecosystem = db4oUtil.retrieveSystem();
         Ecosystem.setInstance(ecosystem);
     }
 
@@ -56,7 +58,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel3.setBackground(new java.awt.Color(153, 255, 255));
+        jPanel3.setBackground(new java.awt.Color(204, 255, 204));
 
         jLabel1.setBackground(new java.awt.Color(0, 0, 0));
         jLabel1.setFont(new java.awt.Font("Adelle Sans Devanagari", 1, 18)); // NOI18N
@@ -212,61 +214,61 @@ public class MainFrame extends javax.swing.JFrame {
         Password.setText("");
 
         panelWorkArea.removeAll();
-        logout_panel blankJP= new logout_panel();
-        panelWorkArea.add("blank",blankJP);
-        CardLayout crdLyt=(CardLayout)panelWorkArea.getLayout();
+        logout_panel blankJP = new logout_panel();
+        panelWorkArea.add("blank", blankJP);
+        CardLayout crdLyt = (CardLayout) panelWorkArea.getLayout();
         crdLyt.next(panelWorkArea);
         db4oUtil.storeSystem(ecosystem);        // TODO add your handling code here:
     }//GEN-LAST:event_logoutbtnActionPerformed
 
     private void loginbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginbtnActionPerformed
-        String userName=Username.getText();
-        char[] passCharArray= Password.getPassword();
-        String password= String.valueOf(passCharArray);
+        String userName = Username.getText();
+        char[] passCharArray = Password.getPassword();
+        String password = String.valueOf(passCharArray);
 
         //Step 1: To see if the user is present, check the system's user account direct
-        UserAccount useraccount=ecosystem.getUserAccountDirectory().authenticateUser(userName, password);
-        Enterprise inEnterprise=null;
-        Organization inOrganization=null;
+        UserAccount useraccount = ecosystem.getUserAccountDirectory().authenticateUser(userName, password);
+        Enterprise inEnterprise = null;
+        Organization inOrganization = null;
 
-        if(useraccount==null){
+        if (useraccount == null) {
             //Step 2:Checking of enterprise 
-            for(Network network:ecosystem.getNetworkList()){
+            for (Network network : ecosystem.getNetworkList()) {
                 //Step 2-a: Check inside network against each enterprise
-                for(Enterprise enterprise: network.getEnterpriseDirectory().getEnterprise_list()){
-                    useraccount=enterprise.getUserAccountDirectory().authenticateUser(userName, password);
-                    if(useraccount==null){
+                for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterprise_list()) {
+                    useraccount = enterprise.getUserAccountDirectory().authenticateUser(userName, password);
+                    if (useraccount == null) {
                         //Step 3: Check the network for each enterprise
-                        for(Organization organization:enterprise.getOrganization_directory().getOrganizationList()){
-                            useraccount=organization.getUserAccountDirectory().authenticateUser(userName, password);
+                        for (Organization organization : enterprise.getOrganization_directory().getOrganizationList()) {
+                            useraccount = organization.getUserAccountDirectory().authenticateUser(userName, password);
 
-                            if(useraccount!=null){
+                            if (useraccount != null) {
 
-                                inEnterprise=enterprise;
-                                inOrganization=organization;
+                                inEnterprise = enterprise;
+                                inOrganization = organization;
                                 break;
                             }
                         }
-                    }else{
-                        inEnterprise=enterprise;
+                    } else {
+                        inEnterprise = enterprise;
                         break;
                     }
-                    if(inEnterprise!=null){
+                    if (inEnterprise != null) {
                         break;
                     }
-                    if(inEnterprise!=null){
+                    if (inEnterprise != null) {
                         break;
                     }
 
                 }
             }
         }
-        if(useraccount==null){
+        if (useraccount == null) {
             JOptionPane.showMessageDialog(null, "Invalid Credentials!");
             return;
-        }else{
-            CardLayout layout=(CardLayout) panelWorkArea.getLayout();
-            panelWorkArea.add("workArea",useraccount.getRole().createWorkArea(panelWorkArea, useraccount, inOrganization, inEnterprise, ecosystem));
+        } else {
+            CardLayout layout = (CardLayout) panelWorkArea.getLayout();
+            panelWorkArea.add("workArea", useraccount.getRole().createWorkArea(panelWorkArea, useraccount, inOrganization, inEnterprise, ecosystem));
             layout.next(panelWorkArea);
         }
         loginbtn.setEnabled(false);
