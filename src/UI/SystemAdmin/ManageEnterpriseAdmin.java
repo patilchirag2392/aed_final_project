@@ -101,7 +101,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
@@ -262,7 +262,6 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, 560, 330));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("/Users/sej/Downloads/ezgif.com-gif-maker-3.png")); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -270,7 +269,6 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 60, 60));
 
-        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/sej/Documents/ezgif.com-gif-maker-10.gif")); // NOI18N
         jLabel7.setText("jLabel7");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 550, 360));
     }// </editor-fold>//GEN-END:initComponents

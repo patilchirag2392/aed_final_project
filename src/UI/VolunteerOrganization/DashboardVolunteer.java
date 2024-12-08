@@ -114,7 +114,7 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         btnJoinEvent = new javax.swing.JButton();
         btnView = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 204));
 
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 

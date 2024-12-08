@@ -86,7 +86,7 @@ public class PoliceWorkArea extends javax.swing.JPanel {
         tblRequests = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
-        jPanel2.setBackground(new java.awt.Color(204, 255, 255));
+        jPanel2.setBackground(new java.awt.Color(204, 255, 204));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));

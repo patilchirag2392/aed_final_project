@@ -86,7 +86,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(204, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 153));
@@ -220,8 +220,6 @@ public class ManageEnterprise extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 617, 302));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, -1, -1));
-
-        jButton1.setIcon(new javax.swing.ImageIcon("/Users/sej/Downloads/ezgif.com-gif-maker-3.png")); // NOI18N
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 90, 60, 60));
     }// </editor-fold>//GEN-END:initComponents
 

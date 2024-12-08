@@ -92,7 +92,7 @@ public class SupplyRequest extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tblReq.setBackground(new java.awt.Color(204, 204, 204));
@@ -118,7 +118,6 @@ public class SupplyRequest extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 588, 1073, 150));
 
         btnBarChart.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBarChart.setIcon(new javax.swing.ImageIcon("/Users/sej/Downloads/ezgif.com-gif-maker-6.png")); // NOI18N
         btnBarChart.setBorderPainted(false);
         btnBarChart.setContentAreaFilled(false);
         btnBarChart.addActionListener(new java.awt.event.ActionListener() {
@@ -215,7 +214,6 @@ public class SupplyRequest extends javax.swing.JPanel {
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 210, -1, -1));
 
         btnBack.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        btnBack.setIcon(new javax.swing.ImageIcon("/Users/sej/Downloads/ezgif.com-gif-maker-3.png")); // NOI18N
         btnBack.setBorderPainted(false);
         btnBack.setContentAreaFilled(false);
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -247,7 +245,6 @@ public class SupplyRequest extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1158, -1));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("/Users/sej/Downloads/ezgif.com-gif-maker-15.gif")); // NOI18N
         jLabel5.setText("jLabel5");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 382, -1));
     }// </editor-fold>//GEN-END:initComponents

@@ -49,7 +49,7 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
-        setBackground(new java.awt.Color(204, 255, 255));
+        setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel3.setBackground(new java.awt.Color(0, 102, 102));
@@ -113,12 +113,6 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
             }
         });
 
-        jLabel6.setIcon(new javax.swing.ImageIcon("/Users/sej/Documents/ezgif.com-gif-maker-2.jpg")); // NOI18N
-
-        jLabel7.setIcon(new javax.swing.ImageIcon("/Users/sej/Documents/ezgif.com-gif-maker-4.png")); // NOI18N
-
-        jLabel8.setIcon(new javax.swing.ImageIcon("/Users/sej/Documents/ezgif.com-gif-maker-5.png")); // NOI18N
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -179,8 +173,6 @@ public class SystemAdminWorkArea extends javax.swing.JPanel {
         );
 
         add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 220, -1, -1));
-
-        jLabel9.setIcon(new javax.swing.ImageIcon("/Users/sej/Documents/1st .gif")); // NOI18N
         add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, 480, 400));
     }// </editor-fold>//GEN-END:initComponents
 
