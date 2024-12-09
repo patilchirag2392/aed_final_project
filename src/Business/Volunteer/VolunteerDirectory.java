@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Business.Volunteer;
+
 import java.util.ArrayList;
 
 /**
@@ -10,11 +11,12 @@ import java.util.ArrayList;
  * @author Reema
  */
 public class VolunteerDirectory {
+
     private ArrayList<Volunteer> volList;
 
     public VolunteerDirectory() {
-        volList= new ArrayList<>();
-        
+        volList = new ArrayList<>();
+
     }
 
     public ArrayList<Volunteer> getvolList() {
@@ -24,15 +26,17 @@ public class VolunteerDirectory {
     public void setvolList(ArrayList<Volunteer> volList) {
         this.volList = volList;
     }
+
     //add a new volunteer
-    public Volunteer addVolunteer(){
-    
+    public Volunteer addVolunteer() {
+
         Volunteer v = new Volunteer();
         volList.add(v);
         return v;
     }
+
     //remove a volunteer
-    public void removeVolunteer(Volunteer v){
+    public void removeVolunteer(Volunteer v) {
         volList.remove(v);
     }
 

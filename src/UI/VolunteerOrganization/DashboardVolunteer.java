@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.VolunteerOrganization;
+
 import UI.EventMakerWorkArea.*;
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
@@ -30,59 +31,55 @@ public class DashboardVolunteer extends javax.swing.JPanel {
     /**
      * Creates new form DashboardVolunteer
      */
-     private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private UserAccount account;
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
     private Volunteer vm;
-    
-    public DashboardVolunteer(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
+
+    public DashboardVolunteer(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.organization=organization;
-        this.enterprise=enterprise;
-        this.system=system;
-    
-    for (Volunteer volunteer:((VolunteerOrganization)organization).getVolunteerList().getvolList())
-        {
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.system = system;
+
+        for (Volunteer volunteer : ((VolunteerOrganization) organization).getVolunteerList().getvolList()) {
             if (account.getEmployee().getempName().equals(volunteer.getvolName())) {
-                 vm=volunteer;
-                 
+                vm = volunteer;
+
                 System.out.println("Volunteer Name" + vm.getvolName());
             }
-            
+
         }
-        
-        
-            if(vm.getWorkqueue()== null){
+
+        if (vm.getWorkqueue() == null) {
             WorkQueue w = new WorkQueue();
             vm.setWorkqueue(w);
-            
+
         }
         populateTableEvent();
     }
-    
-    public void populateTableEvent()
-    {
-         DefaultTableModel model = (DefaultTableModel) tblEventNGO.getModel();
-        
+
+    public void populateTableEvent() {
+        DefaultTableModel model = (DefaultTableModel) tblEventNGO.getModel();
+
         model.setRowCount(0);
-        
-        
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkRequest){ 
-            Object[] row = new Object[10];
-            row[0] = work;
-            row[1] = ((NGOWorkRequest) work).getDescription();
-            row[2] =  work.getRequestDate();
-            row[3] = ((NGOWorkRequest) work).getLocation();
-            row[4] = ((NGOWorkRequest) work).getvRequired();
-            row[5] =  ((NGOWorkRequest) work).getvAcquired();
-            
-            model.addRow(row);
-           }
+
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof NGOWorkRequest) {
+                Object[] row = new Object[10];
+                row[0] = work;
+                row[1] = ((NGOWorkRequest) work).getDescription();
+                row[2] = work.getRequestDate();
+                row[3] = ((NGOWorkRequest) work).getLocation();
+                row[4] = ((NGOWorkRequest) work).getvRequired();
+                row[5] = ((NGOWorkRequest) work).getvAcquired();
+
+                model.addRow(row);
+            }
         }
     }
 
@@ -305,8 +302,8 @@ public class DashboardVolunteer extends javax.swing.JPanel {
         } else {
             NGOWorkRequest p = (NGOWorkRequest) tblEventNGO.getValueAt(selectedRow, 0);
 
-            p.setvRequired(p.getvRequired()-1);
-            p.setvAcquired(p.getvAcquired()+1);
+            p.setvRequired(p.getvRequired() - 1);
+            p.setvAcquired(p.getvAcquired() + 1);
             p.setVolunteer(vm);
 
             JOptionPane.showMessageDialog(null, "You Successfully registered for an Event!");

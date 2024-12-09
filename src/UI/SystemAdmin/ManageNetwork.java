@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.SystemAdmin;
+
 import Business.Ecosystem;
 import Business.Network.Network;
 import java.awt.CardLayout;
@@ -20,16 +21,17 @@ public class ManageNetwork extends javax.swing.JPanel {
     /**
      * Creates new form ManageNetwork
      */
-     private JPanel panelWorkArea;
+    private JPanel panelWorkArea;
     private Ecosystem system;
-    
-    public ManageNetwork(JPanel userProcessContainer,Ecosystem system) {
+
+    public ManageNetwork(JPanel userProcessContainer, Ecosystem system) {
         initComponents();
-        this.panelWorkArea=userProcessContainer;
-        this.system=system;
+        this.panelWorkArea = userProcessContainer;
+        this.system = system;
         populateTableNetwork();
     }
-    public void populateTableNetwork(){
+
+    public void populateTableNetwork() {
         DefaultTableModel model = (DefaultTableModel) tblNetwork.getModel();
 
         model.setRowCount(0);
@@ -39,6 +41,7 @@ public class ManageNetwork extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -175,6 +178,7 @@ public class ManageNetwork extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 410, 616, 261));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 390, 470, 460));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/ezgif.com-gif-maker-3.png"))); // NOI18N
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -196,16 +200,15 @@ public class ManageNetwork extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow= tblNetwork.getSelectedRow();
-        if(selectedRow<0){
+        int selectedRow = tblNetwork.getSelectedRow();
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
+        } else {
 
-            Network p=(Network) tblNetwork.getValueAt(selectedRow, 0);
+            Network p = (Network) tblNetwork.getValueAt(selectedRow, 0);
 
             for (Network network : system.getNetworkList()) {
-                if(p==network){
+                if (p == network) {
                     system.getNetworkList().remove(p);
                     break;
                 }

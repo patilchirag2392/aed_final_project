@@ -12,49 +12,41 @@ import java.util.ArrayList;
  * @author SUJAL DUSANE
  */
 public class EnterpriseDirectory {
-    
-private ArrayList<Enterprise> enterprise_list;
-    
-    public EnterpriseDirectory()
-    {
+
+    private ArrayList<Enterprise> enterprise_list;
+
+    public EnterpriseDirectory() {
         enterprise_list = new ArrayList<>();
     }
 
     public ArrayList<Enterprise> getEnterprise_list() {
         return enterprise_list;
     }
+
     //Creaye and add new enterprises
-    public Enterprise createAndAddEnterprise(String ent_name, Enterprise.EnterpriseType type){
+    public Enterprise createAndAddEnterprise(String ent_name, Enterprise.EnterpriseType type) {
         Enterprise enterprise = null;
-        if(type == Enterprise.EnterpriseType.Community){
+        if (type == Enterprise.EnterpriseType.Community) {
             enterprise = new CommunityEnterprise(ent_name);
             enterprise_list.add(enterprise);
-        }
-        else if(type == Enterprise.EnterpriseType.Provider){
-            enterprise= new ProviderEnterprise(ent_name);
+        } else if (type == Enterprise.EnterpriseType.Provider) {
+            enterprise = new ProviderEnterprise(ent_name);
+            enterprise_list.add(enterprise);
+        } else if (type == Enterprise.EnterpriseType.NGO) {
+            enterprise = new NGOEnterprise(ent_name);
+            enterprise_list.add(enterprise);
+        } else if (type == Enterprise.EnterpriseType.Police) {
+            enterprise = new PoliceEnterprise(ent_name);
+            enterprise_list.add(enterprise);
+        } else if (type == Enterprise.EnterpriseType.Hospital) {
+            enterprise = new HospitalEnterprise(ent_name);
+            enterprise_list.add(enterprise);
+        } else if (type == Enterprise.EnterpriseType.FireMan) {
+            enterprise = new FireManEnterprise(ent_name);
             enterprise_list.add(enterprise);
         }
-         else if(type == Enterprise.EnterpriseType.NGO){
-            enterprise= new NGOEnterprise(ent_name);
-            enterprise_list.add(enterprise);
-         }
-            else if(type == Enterprise.EnterpriseType.Police){
-            enterprise= new PoliceEnterprise(ent_name);
-            enterprise_list.add(enterprise);
-         }
-            else if(type == Enterprise.EnterpriseType.Hospital){
-            enterprise= new HospitalEnterprise(ent_name);
-            enterprise_list.add(enterprise);
-         } 
-            else if(type == Enterprise.EnterpriseType.FireMan){
-            enterprise= new FireManEnterprise(ent_name);
-            enterprise_list.add(enterprise);
-         }
         return enterprise;
-        
+
     }
-   
-    
+
 }
-
-

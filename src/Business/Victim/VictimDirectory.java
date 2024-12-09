@@ -11,11 +11,12 @@ import java.util.ArrayList;
  * @author Reema
  */
 public class VictimDirectory {
+
     private ArrayList<Victim> vicDirectory;
 
     public VictimDirectory() {
-        vicDirectory=new ArrayList<>();
-        
+        vicDirectory = new ArrayList<>();
+
     }
 
     public ArrayList<Victim> getVictimDirectory() {
@@ -25,14 +26,16 @@ public class VictimDirectory {
     public void setVictimDirectory(ArrayList<Victim> vicDirectory) {
         this.vicDirectory = vicDirectory;
     }
+
     //add a new victim
-    public Victim addVictim(){
-        Victim cs= new Victim();
+    public Victim addVictim() {
+        Victim cs = new Victim();
         vicDirectory.add(cs);
         return cs;
     }
+
     //remove a victim
-    public void removeVictim(Victim cs){
+    public void removeVictim(Victim cs) {
         vicDirectory.remove(cs);
     }
 }

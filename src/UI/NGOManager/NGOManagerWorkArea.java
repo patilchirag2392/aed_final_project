@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.NGOManager;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -26,11 +27,13 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.category.DefaultCategoryDataset;
+import com.toedter.calendar.JDateChooser;
 
 /**
  *
  * @author SUJAL DUSANE
  */
+        
 public class NGOManagerWorkArea extends javax.swing.JPanel {
 
     /**
@@ -43,63 +46,62 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     private Ecosystem system;
     private Date d;
     private SimpleDateFormat s;
-    public NGOManagerWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
+
+    public NGOManagerWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.organization=organization;
-        this.enterprise=enterprise;
-        this.system=system;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.system = system;
         d = new Date();
         s = new SimpleDateFormat("MM/dd/YY");
         populateTableEvent();
         populateTableWorkQueue();
     }
-    public void populateTableEvent()
-    {
-         DefaultTableModel model = (DefaultTableModel) tblNgoEvents.getModel();
-        
+
+    public void populateTableEvent() {
+        DefaultTableModel model = (DefaultTableModel) tblNgoEvents.getModel();
+
         model.setRowCount(0);
-        
-        
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof NGOWorkRequest){ 
-            Object[] row = new Object[10];
-            row[0] = work;
-            row[1] = ((NGOWorkRequest) work).getDescription();
-            row[2] =  work.getRequestDate();
-            row[3] = ((NGOWorkRequest) work).getLocation();
-            row[4] = ((NGOWorkRequest) work).getvRequired();
-            row[5] = ((NGOWorkRequest) work).getvAcquired();
-            
-            model.addRow(row);
-           }
+
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof NGOWorkRequest) {
+                Object[] row = new Object[10];
+                row[0] = work;
+                row[1] = ((NGOWorkRequest) work).getDescription();
+                row[2] = work.getRequestDate();
+                row[3] = ((NGOWorkRequest) work).getLocation();
+                row[4] = ((NGOWorkRequest) work).getvRequired();
+                row[5] = ((NGOWorkRequest) work).getvAcquired();
+
+                model.addRow(row);
+            }
         }
     }
+
     //populate victim request to NGO
-    public void populateTableWorkQueue(){
-         DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
-        
+    public void populateTableWorkQueue() {
+        DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
+
         model.setRowCount(0);
-        
-        
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){
-               if((work.getStatus().equalsIgnoreCase("Assigned To NGO"))||(work.getStatus().equalsIgnoreCase("NGO ASSIGNED the Request"))){
-                   
-               
-            Object[] row = new Object[10];
-            row[0] = work.getSender().getEmployee().getempId();
-            row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
-            row[4] = work.getRequestDate();
-            row[5] = work;
-            row[6] = work.getReciever();
-            
-            model.addRow(row);
-           }
-        }
+
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof VictimWorkRequest) {
+                if ((work.getStatus().equalsIgnoreCase("Assigned To NGO")) || (work.getStatus().equalsIgnoreCase("NGO ASSIGNED the Request"))) {
+
+                    Object[] row = new Object[10];
+                    row[0] = work.getSender().getEmployee().getempId();
+                    row[1] = work.getSubject();
+                    row[2] = ((VictimWorkRequest) work).getDescription();
+                    row[3] = ((VictimWorkRequest) work).getLocation();
+                    row[4] = work.getRequestDate();
+                    row[5] = work;
+                    row[6] = work.getReciever();
+
+                    model.addRow(row);
+                }
+            }
         }
     }
 
@@ -134,6 +136,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         txtDesc = new javax.swing.JTextArea();
         txtTitle = new javax.swing.JTextField();
+        jDateChooser = new com.toedter.calendar.JDateChooser();
         jPanel4 = new javax.swing.JPanel();
         btnRequest = new javax.swing.JButton();
         btnAnalysis = new javax.swing.JButton();
@@ -306,9 +309,11 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addComponent(txtVolunteers, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(txtLocation, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                        .addComponent(txtVolunteers, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))
+                    .addComponent(jDateChooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -319,11 +324,13 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jDateChooser, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -410,18 +417,15 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-
-        else {
+        } else {
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
 
-            if(cswr.getStatus().equalsIgnoreCase("Assigned to NGO")){
+            if (cswr.getStatus().equalsIgnoreCase("Assigned to NGO")) {
                 cswr.setStatus("NGO Assigned the Request");
                 cswr.setReciever(account);
 
                 populateTableWorkQueue();
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -432,17 +436,15 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
 
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "To allocate the account, please choose the row", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else {
+        } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-            if(p.getStatus().equalsIgnoreCase("NGO Assigned the Request")){
+            if (p.getStatus().equalsIgnoreCase("NGO Assigned the Request")) {
                 p.setStatus("Complete");
                 p.setReciever(account);
                 JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                 populateTableWorkQueue();
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
             }
 
@@ -452,11 +454,11 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     private void txtVolunteersKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVolunteersKeyTyped
         // TODO add your handling code here:
         char typedVol = evt.getKeyChar();
-        if(!Character.isDigit(typedVol)){
+        if (!Character.isDigit(typedVol)) {
             evt.consume();
         }
         //Restrict the length to 3
-        if(txtVolunteers.getText().length() > 2){
+        if (txtVolunteers.getText().length() > 2) {
             evt.consume();
         }
     }//GEN-LAST:event_txtVolunteersKeyTyped
@@ -466,18 +468,18 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     }//GEN-LAST:event_txtLocationActionPerformed
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
-        try{
-            if(txtTitle.getText().isEmpty() || txtDesc.getText().isEmpty() || txtLocation.getText().isEmpty() || txtVolunteers.getText().isEmpty()){
-                JOptionPane.showMessageDialog(null,"Please fill the Empty fields");
-            }else{
+        try {
+            if (txtTitle.getText().isEmpty() || txtDesc.getText().isEmpty() || txtLocation.getText().isEmpty() || txtVolunteers.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(null, "Please fill the Empty fields");
+            } else {
 
                 String event = txtTitle.getText();
                 String desp = txtDesc.getText();
                 String location = txtLocation.getText();
-                Date date = dateChooser.getDate();
+                Date date = jDateChooser.getDate();
                 Date curDate = new Date();
 
-                Date d1 = null,d2 = null;
+                Date d1 = null, d2 = null;
                 SimpleDateFormat sdformat = new SimpleDateFormat("yyyy-MM-dd");
                 String s3 = sdformat.format(date);
                 String s4 = sdformat.format(curDate);
@@ -487,15 +489,14 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                 } catch (ParseException ex) {
                     Logger.getLogger(NGOManagerWorkArea.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                if(d1.compareTo(d2) < 0 ){
+                if (d1.compareTo(d2) < 0) {
                     JOptionPane.showMessageDialog(null, "Past dates are not allowed");
                     return;
 
                 }
                 int req = Integer.parseInt(txtVolunteers.getText());
 
-                if(event.equals("") || event.isEmpty() && desp.equals("") || desp.isEmpty() && location.equals("")|| location.isEmpty())
-                {
+                if (event.equals("") || event.isEmpty() && desp.equals("") || desp.isEmpty() && location.equals("") || location.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Please enter valid request");
                     return;
                 }
@@ -515,15 +516,16 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
                 txtTitle.setText("");
                 txtDesc.setText("");
                 txtLocation.setText("");
-                dateChooser.setCalendar(null);
+                jDateChooser.setCalendar(null);
                 txtVolunteers.setText("");
             }
-        }catch(NumberFormatException e){}
+        } catch (NumberFormatException e) {
+        }
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnRequestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRequestActionPerformed
         // TODO add your handling code here:
-        SupplyRequest sr = new SupplyRequest(userProcessContainer,account,organization, enterprise,system);
+        SupplyRequest sr = new SupplyRequest(userProcessContainer, account, organization, enterprise, system);
         userProcessContainer.add("ManageEmployee", sr);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.next(userProcessContainer);
@@ -532,11 +534,10 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     private void btnAnalysisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAnalysisActionPerformed
         DefaultCategoryDataset d = new DefaultCategoryDataset();
 
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-            if(work instanceof NGOWorkRequest)
-            {
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof NGOWorkRequest) {
 
-                d.setValue(((NGOWorkRequest) work).getvAcquired(),"Event List",((NGOWorkRequest) work).getTitle());
+                d.setValue(((NGOWorkRequest) work).getvAcquired(), "Event List", ((NGOWorkRequest) work).getTitle());
 
             }
         }
@@ -544,9 +545,9 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
         JFreeChart chart = ChartFactory.createBarChart("Volunteers Acquired", "Event Name", "Volunteers Participated", d, PlotOrientation.VERTICAL, false, true, false);
         CategoryPlot p = chart.getCategoryPlot();
         p.setRangeGridlinePaint(Color.black);
-        ChartFrame f = new ChartFrame("Volunteer Analysis",chart);
+        ChartFrame f = new ChartFrame("Volunteer Analysis", chart);
         f.setVisible(true);
-        f.setSize(500,400);
+        f.setSize(500, 400);
     }//GEN-LAST:event_btnAnalysisActionPerformed
 
 
@@ -556,6 +557,7 @@ public class NGOManagerWorkArea extends javax.swing.JPanel {
     private javax.swing.JButton btnComplete;
     private javax.swing.JButton btnCreate;
     private javax.swing.JButton btnRequest;
+    private com.toedter.calendar.JDateChooser jDateChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

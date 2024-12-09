@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.Provider;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -32,18 +33,19 @@ public class ProviderWorkArea extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Ecosystem system;
     private Provider p;
-    public ProviderWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
+
+    public ProviderWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
         initComponents();
-    
-    this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.organization=organization;
-        this.enterprise=enterprise;
-        this.system=system;
-       
-          for (Provider provider : ((ProviderOrganization)organization).getProviderList().getProviderList()) {
+
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.system = system;
+
+        for (Provider provider : ((ProviderOrganization) organization).getProviderList().getProviderList()) {
             if (account.getEmployee().getempName().equals(provider.getS_name())) {
-                 p=provider;
+                p = provider;
             }
         }
 
@@ -54,43 +56,42 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         populateTableSupply();
         populateTableCreate();
     }
+
     //provide the required supplies on request table
-    public void populateTableSupply()
-    {
+    public void populateTableSupply() {
         DefaultTableModel model = (DefaultTableModel) tblProvideReq.getModel();
-        
+
         model.setRowCount(0);
-        
-        
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkRequest){ 
-            Object[] row = new Object[10];
-            row[0] = ((ProviderWorkRequest) work).getRtype();
-            row[1] = ((ProviderWorkRequest) work).getReq();
-            row[2] = ((ProviderWorkRequest) work).getQuantity();
-            row[3] = work;
-            row[4] = work.getSender();
-           
-            
-            model.addRow(row);
-           }
+
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof ProviderWorkRequest) {
+                Object[] row = new Object[10];
+                row[0] = ((ProviderWorkRequest) work).getRtype();
+                row[1] = ((ProviderWorkRequest) work).getReq();
+                row[2] = ((ProviderWorkRequest) work).getQuantity();
+                row[3] = work;
+                row[4] = work.getSender();
+
+                model.addRow(row);
+            }
         }
     }
+
     //create supply request
-    public void populateTableCreate(){
-        
-            DefaultTableModel model = (DefaultTableModel) tblCreate.getModel();
-        
-            model.setRowCount(0);
-            for(Item item: p.getItemDirectory().getSupplyList()){
+    public void populateTableCreate() {
+
+        DefaultTableModel model = (DefaultTableModel) tblCreate.getModel();
+
+        model.setRowCount(0);
+        for (Item item : p.getItemDirectory().getSupplyList()) {
             Object[] row = new Object[10];
             row[0] = item.getRequirement_type();
             row[1] = item.getRequirement();
             row[2] = item.getQuantity();
             model.addRow(row);
-            }
-            
-    } 
+        }
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -360,7 +361,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                     }
                     for (Item item : p.getItemDirectory().getSupplyList()) {
 
-                        if (pwr.getReq().equals(item.getRequirement())&& pwr.getRtype().equals(item.getRequirement_type())) {
+                        if (pwr.getReq().equals(item.getRequirement()) && pwr.getRtype().equals(item.getRequirement_type())) {
 
                             if (item.getQuantity() - pwr.getQuantity() < 0) {
                                 JOptionPane.showMessageDialog(null, "Not enough supply. Wait for sometime");
@@ -371,20 +372,20 @@ public class ProviderWorkArea extends javax.swing.JPanel {
                         }
                     }
 
-                    if(temp==1){
+                    if (temp == 1) {
                         pwr.setStatus("Complete");
                         JOptionPane.showMessageDialog(null, "Completed the request successfully");
-                    }else{
+                    } else {
                         pwr.setStatus("Requested");
-                        JOptionPane.showMessageDialog(null, "No Stock Available, Request Failed !!","Warning",JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(null, "No Stock Available, Request Failed !!", "Warning", JOptionPane.WARNING_MESSAGE);
                     }
                     populateTableSupply();
                     populateTableCreate();
                 } else {
-                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.","Warning",JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(null, "You cannot complete it two times.", "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Please assign first","Warning",JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(null, "Please assign first", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
 
@@ -393,11 +394,11 @@ public class ProviderWorkArea extends javax.swing.JPanel {
     private void reqtxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_reqtxtKeyTyped
         // TODO add your handling code here:
         char typedReq = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedReq) && !Character.isWhitespace(typedReq)){
+        if (!Character.isAlphabetic(typedReq) && !Character.isWhitespace(typedReq)) {
             evt.consume();
         }
         //Restrict the length to 256
-        if(reqtxt.getText().length() > 255){
+        if (reqtxt.getText().length() > 255) {
             evt.consume();
         }
     }//GEN-LAST:event_reqtxtKeyTyped
@@ -405,11 +406,11 @@ public class ProviderWorkArea extends javax.swing.JPanel {
     private void quantxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantxtKeyTyped
         // TODO add your handling code here:
         char typedQnt = evt.getKeyChar();
-        if(!Character.isDigit(typedQnt)){
+        if (!Character.isDigit(typedQnt)) {
             evt.consume();
         }
         //Restrict the length to 5
-        if(quantxt.getText().length() > 4){
+        if (quantxt.getText().length() > 4) {
             evt.consume();
         }
     }//GEN-LAST:event_quantxtKeyTyped
@@ -420,9 +421,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
         String req = reqtxt.getText();
         int quantity = Integer.parseInt(quantxt.getText());
 
-        if(req.equals("") || req.isEmpty())
-
-        {
+        if (req.equals("") || req.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Please create requirement");
             return;
         }
@@ -441,7 +440,7 @@ public class ProviderWorkArea extends javax.swing.JPanel {
 
     private void assignbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_assignbtnActionPerformed
         // TODO add your handling code here:
-         int selectedRow = tblProvideReq.getSelectedRow();
+        int selectedRow = tblProvideReq.getSelectedRow();
         if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Select a row to allocate", "Warning", JOptionPane.WARNING_MESSAGE);
         } else {

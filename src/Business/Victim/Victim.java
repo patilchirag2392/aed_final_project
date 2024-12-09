@@ -11,15 +11,17 @@ import Business.WorkQueue.WorkQueue;
  * @author Reema
  */
 public class Victim {
+
     private String name;
     private String id;
     private WorkQueue workqueue;
-    
-    private static int count=1;
+
+    private static int count = 1;
+
     //victim class constructor to autogenerate id
-     public Victim(){
-         
-        id= "Victim"+(++count);
+    public Victim() {
+
+        id = "Victim" + (++count);
     }
 
     public WorkQueue getWorkqueue() {
@@ -29,8 +31,7 @@ public class Victim {
     public void setWorkqueue(WorkQueue workqueue) {
         this.workqueue = workqueue;
     }
- 
-     
+
     public String getName() {
         return name;
     }
@@ -46,9 +47,9 @@ public class Victim {
     public void setId(String id) {
         this.id = id;
     }
-     
-     @Override
-     public String toString(){
-         return name;
-     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }

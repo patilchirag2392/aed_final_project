@@ -14,15 +14,15 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class PoliceOrganization extends Organization{
-    PoliceDirectory policelist;
-    //constructor to add police list to police directory
-    public PoliceOrganization(String name)
-    {
-        super(Organization.Type.Police.getValue());
-        policelist=new PoliceDirectory();
-    }
+public class PoliceOrganization extends Organization {
 
+    PoliceDirectory policelist;
+
+    //constructor to add police list to police directory
+    public PoliceOrganization(String name) {
+        super(Organization.Type.Police.getValue());
+        policelist = new PoliceDirectory();
+    }
 
     public PoliceDirectory getPolicelist() {
         return policelist;
@@ -31,11 +31,12 @@ public class PoliceOrganization extends Organization{
     public void setPolicelist(PoliceDirectory policelist) {
         this.policelist = policelist;
     }
+
     //hasmap to support police role
     @Override
-    public HashSet<Role> getSupportedRole(){
-       role.add(new PoliceRole());
-       return role;
-       
-    } 
+    public HashSet<Role> getSupportedRole() {
+        role.add(new PoliceRole());
+        return role;
+
+    }
 }

@@ -22,37 +22,37 @@ public class ManageOrganization extends javax.swing.JPanel {
      */
     private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
-    
-    public ManageOrganization(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
-        initComponents();   
-        this.userProcessContainer=userProcessContainer;
-        this.orgdirectory=orgdirectory;
+
+    public ManageOrganization(JPanel userProcessContainer, OrganizationDirectory orgdirectory) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.orgdirectory = orgdirectory;
         tablePopulate();
         comboPopulate();
 
     }
-    
-     private void tablePopulate(){
-        
+
+    private void tablePopulate() {
+
         DefaultTableModel model = (DefaultTableModel) tblOrg.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Organization organization : orgdirectory.getOrganizationList()){
+
+        for (Organization organization : orgdirectory.getOrganizationList()) {
             Object[] row = new Object[3];
             row[2] = organization.getOrganizationCode();
             row[0] = organization.getOrgName();
-            row[1]=  organization.getName();
-            
+            row[1] = organization.getName();
+
             model.addRow(row);
         }
     }
-     //populate police organization in combo box
-    private void comboPopulate(){
+    //populate police organization in combo box
+
+    private void comboPopulate() {
         comboOrg.removeAllItems();
         comboOrg.addItem(Organization.Type.Police);
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -221,11 +221,11 @@ public class ManageOrganization extends javax.swing.JPanel {
 
     private void btnAddOrganizationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddOrganizationActionPerformed
         // TODO add your handling code here:
-        if(nametxt.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"FIELD CANNOT BE EMPTY");
-        }else{
-            Organization.Type type=(Organization.Type) comboOrg.getSelectedItem();
-            orgdirectory.createOrganization(type,nametxt.getText());
+        if (nametxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "FIELD CANNOT BE EMPTY");
+        } else {
+            Organization.Type type = (Organization.Type) comboOrg.getSelectedItem();
+            orgdirectory.createOrganization(type, nametxt.getText());
             tablePopulate();
         }
     }//GEN-LAST:event_btnAddOrganizationActionPerformed
@@ -233,11 +233,11 @@ public class ManageOrganization extends javax.swing.JPanel {
     private void nametxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nametxtKeyTyped
         // TODO add your handling code here:
         char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+        if (!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)) {
             evt.consume();
         }
         //Restrict the length to 256
-        if(nametxt.getText().length() > 205){
+        if (nametxt.getText().length() > 205) {
             evt.consume();
         }
     }//GEN-LAST:event_nametxtKeyTyped

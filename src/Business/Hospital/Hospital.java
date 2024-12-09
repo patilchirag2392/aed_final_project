@@ -9,15 +9,15 @@ package Business.Hospital;
  * @author Reema
  */
 public class Hospital {
+
     private String doc_name;
     private String doc_id;
-    private static int count=1;
-    
+    private static int count = 1;
+
     //Hospital constructor to generate id automatically
     public Hospital() {
-        
-        
-        doc_id="ORG"+(++count);
+
+        doc_id = "ORG" + (++count);
     }
 
     public static int getCount() {
@@ -27,9 +27,7 @@ public class Hospital {
     public static void setCount(int count) {
         Hospital.count = count;
     }
-    
-    
-     
+
     public String getDoc_name() {
         return doc_name;
     }
@@ -46,13 +44,10 @@ public class Hospital {
         this.doc_id = doc_id;
     }
 
-   
-
     @Override
-    public String toString(){
-    return doc_name;
-    
+    public String toString() {
+        return doc_name;
+
     }
 
-    
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.NGOEnterprise;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
@@ -20,11 +21,12 @@ public class NGOAdminWorkArea extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Ecosystem system;
     private Enterprise enterprise;
-    public NGOAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise, Ecosystem ecosyste) {
+
+    public NGOAdminWorkArea(JPanel userProcessContainer, Enterprise enterprise, Ecosystem ecosyste) {
         initComponents();
-        this.enterprise=enterprise;
-        this.userProcessContainer=userProcessContainer;
-        this.system=system;
+        this.enterprise = enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
     }
 
     /**

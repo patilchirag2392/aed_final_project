@@ -11,17 +11,19 @@ import Business.WorkQueue.WorkQueue;
  * @author Reema
  */
 public class Police {
+
     private String polName;
-    private static int c=1;
+    private static int c = 1;
     private String polId;
     private WorkQueue workQueue;
+
     //Police class constructor to autogenerate id
     public Police() {
-        
-        polId = "police"+(++c);
-        workQueue= new WorkQueue();
+
+        polId = "police" + (++c);
+        workQueue = new WorkQueue();
     }
-    
+
     public static int getCount() {
         return c;
     }
@@ -29,7 +31,7 @@ public class Police {
     public static void setCount(int c) {
         Police.c = c;
     }
-    
+
     public String getName() {
         return polName;
     }
@@ -53,9 +55,9 @@ public class Police {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
-          
+
     @Override
-    public String toString(){
+    public String toString() {
         return polName;
     }
 }

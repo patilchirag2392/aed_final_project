@@ -4,7 +4,6 @@
  */
 package UI.ProviderEnterprise;
 
-
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
@@ -22,14 +21,15 @@ public class ProviderAdminWorkArea extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Ecosystem system;
     private Enterprise enterprise;
-    
-    public ProviderAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise, Ecosystem ecosystem) {
+
+    public ProviderAdminWorkArea(JPanel userProcessContainer, Enterprise enterprise, Ecosystem ecosystem) {
         initComponents();
-        this.enterprise=enterprise;
-        this.userProcessContainer=userProcessContainer;
-        this.system=system;
-       
+        this.enterprise = enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
+
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

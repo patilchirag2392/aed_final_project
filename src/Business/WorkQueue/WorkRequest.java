@@ -19,8 +19,9 @@ import java.util.Date;
 /**
  *
  * @author SUJAL DUSANE
- */ 
+ */
 public abstract class WorkRequest {
+
     private String subject;
     private UserAccount sender;
     private UserAccount reciever;
@@ -44,12 +45,10 @@ public abstract class WorkRequest {
         this.fireman = fireman;
     }
 
-
-    
-    public WorkRequest(){
+    public WorkRequest() {
         requestDate = new Date();
     }
-    
+
     public Police getPolice() {
         return police;
     }
@@ -66,7 +65,6 @@ public abstract class WorkRequest {
         this.volunteer = volunteer;
     }
 
-    
     public Item getItem() {
         return item;
     }
@@ -75,7 +73,6 @@ public abstract class WorkRequest {
         this.item = item;
     }
 
-    
     public String getSubject() {
         return subject;
     }
@@ -112,7 +109,6 @@ public abstract class WorkRequest {
         this.provider = provider;
     }
 
-    
     public void setStatus(String status) {
         this.status = status;
     }
@@ -158,8 +154,7 @@ public abstract class WorkRequest {
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return status;
     }
 }
-

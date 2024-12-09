@@ -11,10 +11,11 @@ import java.util.ArrayList;
  * @author SUJAL DUSANE
  */
 public class EventMakerDirectory {
+
     private ArrayList<EventMaker> eventMakerDirectory;
 
     public EventMakerDirectory() {
-        eventMakerDirectory= new ArrayList<>();
+        eventMakerDirectory = new ArrayList<>();
     }
 
     public ArrayList<EventMaker> getChangeMakerDirectory() {
@@ -24,17 +25,17 @@ public class EventMakerDirectory {
     public void setChangeMakerDirectory(ArrayList<EventMaker> changeMakerDirectory) {
         this.eventMakerDirectory = changeMakerDirectory;
     }
-    
+
     //add an event maker
-    public EventMaker addChangeMaker(){
+    public EventMaker addChangeMaker() {
         EventMaker cm = new EventMaker();
         eventMakerDirectory.add(cm);
         return cm;
     }
+
     //remove an event maker
-    public void removeChangeMaker(EventMaker cm){
+    public void removeChangeMaker(EventMaker cm) {
         eventMakerDirectory.remove(cm);
     }
-    
-    
+
 }

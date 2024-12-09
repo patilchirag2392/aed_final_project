@@ -11,15 +11,17 @@ import java.util.HashSet;
 
 /**
  *
- * @author SUJAL DUSANE
+ * @author SUJAL DUSANe
  */
-public class PoliceEnterprise extends Enterprise{
-    public PoliceEnterprise(String ent_name){
-        super(ent_name,Enterprise.EnterpriseType.Police);
+public class PoliceEnterprise extends Enterprise {
+
+    public PoliceEnterprise(String ent_name) {
+        super(ent_name, Enterprise.EnterpriseType.Police);
     }
+
     //hash map to for Police role addition
     @Override
-    public HashSet<Role> getSupportedRole(){
+    public HashSet<Role> getSupportedRole() {
         role.add(new PoliceRole());
         return role;
     }

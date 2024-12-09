@@ -14,13 +14,14 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class DoctorOrganization extends Organization{
+public class DoctorOrganization extends Organization {
+
     HospitalDirectory doctor_list;
+
     //constructor to add doctor list to hospital directory
-    public DoctorOrganization()
-    {
+    public DoctorOrganization() {
         super(Organization.Type.Doctor.getValue());
-        doctor_list= new HospitalDirectory();
+        doctor_list = new HospitalDirectory();
     }
 
     public HospitalDirectory getHospitallist() {
@@ -30,12 +31,12 @@ public class DoctorOrganization extends Organization{
     public void setHospitallist(HospitalDirectory doctorList) {
         this.doctor_list = doctorList;
     }
-    
+
     //hashmap to support doctor role
     @Override
-    public HashSet<Role> getSupportedRole(){
+    public HashSet<Role> getSupportedRole() {
         role.add(new DoctorRole());
-       return role;
+        return role;
     }
-    
+
 }

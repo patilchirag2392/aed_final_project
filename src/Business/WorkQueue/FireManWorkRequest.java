@@ -9,15 +9,16 @@ package Business.WorkQueue;
  *
  * @author SUJAL DUSANE
  */
-public class FireManWorkRequest extends WorkRequest{
+public class FireManWorkRequest extends WorkRequest {
+
     private String description;
     private boolean add;
     private String location;
-    
+
     public FireManWorkRequest() {
-        
+
         add = false;
-        
+
     }
 
     public String getDescription() {

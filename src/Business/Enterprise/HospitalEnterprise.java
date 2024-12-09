@@ -13,17 +13,19 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class HospitalEnterprise extends Enterprise{
-    public HospitalEnterprise(String ent_name){
-        super(ent_name,Enterprise.EnterpriseType.Hospital);
+public class HospitalEnterprise extends Enterprise {
+
+    public HospitalEnterprise(String ent_name) {
+        super(ent_name, Enterprise.EnterpriseType.Hospital);
     }
+
     //hash map to for Doctor role addition
     @Override
-    public HashSet<Role> getSupportedRole(){
-       
+    public HashSet<Role> getSupportedRole() {
+
         role.add(new DoctorRole());
-     
+
         return role;
-        
+
     }
 }

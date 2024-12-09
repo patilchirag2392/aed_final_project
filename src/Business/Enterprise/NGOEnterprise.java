@@ -14,12 +14,14 @@ import java.util.HashSet;
  * @author SUJAL DUSANE
  */
 public class NGOEnterprise extends Enterprise {
-    public NGOEnterprise(String name){
-        super(name,Enterprise.EnterpriseType.NGO);
+
+    public NGOEnterprise(String name) {
+        super(name, Enterprise.EnterpriseType.NGO);
     }
+
     //hash map to for NGO role addition
     @Override
-    public HashSet<Role> getSupportedRole(){
+    public HashSet<Role> getSupportedRole() {
         role.add(new NGOManagerRole());
         return role;
     }

@@ -9,16 +9,17 @@ package Business.WorkQueue;
  *
  * @author SUJAL DUSANE
  */
-public class ProviderWorkRequest extends WorkRequest{
+public class ProviderWorkRequest extends WorkRequest {
+
     private int quantity;
     private boolean add;
     private String rtype;
     private String req;
 
-      public ProviderWorkRequest() {
-       
+    public ProviderWorkRequest() {
+
         add = false;
-       
+
     }
 
     public String getRtype() {

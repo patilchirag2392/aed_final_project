@@ -14,13 +14,14 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class VictimOrganization extends Organization{
+public class VictimOrganization extends Organization {
+
     VictimDirectory victimList;
+
     //constructor to add victim list to victim directory
-    public VictimOrganization()
-    {
+    public VictimOrganization() {
         super(Organization.Type.Victim.getValue());
-        victimList=new VictimDirectory();
+        victimList = new VictimDirectory();
     }
 
     public VictimDirectory getChangeseekerlist() {
@@ -30,11 +31,12 @@ public class VictimOrganization extends Organization{
     public void setChangeseekerlist(VictimDirectory victimList) {
         this.victimList = victimList;
     }
+
     //hashmap to support victim list
     @Override
-    public HashSet<Role> getSupportedRole(){
+    public HashSet<Role> getSupportedRole() {
         role.add(new VictimRole());
         return role;
-        
+
     }
 }

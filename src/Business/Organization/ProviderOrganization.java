@@ -14,13 +14,15 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class ProviderOrganization extends Organization{
+public class ProviderOrganization extends Organization {
+
     ProviderDirectory providerList;
+
     //constructor to add provider list to provider directory
     public ProviderOrganization(String name) {
         super(Organization.Type.Provider.getValue());
-        providerList= new ProviderDirectory();
-      
+        providerList = new ProviderDirectory();
+
     }
 
     public ProviderDirectory getProviderList() {
@@ -30,10 +32,11 @@ public class ProviderOrganization extends Organization{
     public void setProviderList(ProviderDirectory providerList) {
         this.providerList = providerList;
     }
+
     //hashmap to support provider list
     @Override
-    public HashSet<Role> getSupportedRole(){
-       
+    public HashSet<Role> getSupportedRole() {
+
         role.add(new ProviderRole());
         return role;
     }

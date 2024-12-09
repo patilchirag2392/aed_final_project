@@ -14,15 +14,15 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class FireManOrganization extends Organization{
-    FireManDirectory fireman_list;
-    //constructor to add fireman list to fireman directory
-    public FireManOrganization(String f_name)
-    {
-        super(Organization.Type.FireMan.getValue());
-        fireman_list=new FireManDirectory();
-    }
+public class FireManOrganization extends Organization {
 
+    FireManDirectory fireman_list;
+
+    //constructor to add fireman list to fireman directory
+    public FireManOrganization(String f_name) {
+        super(Organization.Type.FireMan.getValue());
+        fireman_list = new FireManDirectory();
+    }
 
     public FireManDirectory getFireman_list() {
         return fireman_list;
@@ -31,11 +31,12 @@ public class FireManOrganization extends Organization{
     public void setFireman_list(FireManDirectory fireman_list) {
         this.fireman_list = fireman_list;
     }
+
     //hasmap to support fire man role
     @Override
-    public HashSet<Role> getSupportedRole(){
-       role.add(new FireManRole());
-       return role;
-       
-    } 
+    public HashSet<Role> getSupportedRole() {
+        role.add(new FireManRole());
+        return role;
+
+    }
 }

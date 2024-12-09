@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.HospitalEnterprise;
+
 import Business.Employee.Employee;
 import Business.Organization.DoctorOrganization;
 import Business.Organization.Organization;
@@ -23,19 +24,21 @@ public class ManageEmployee extends javax.swing.JPanel {
      */
     private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
-    public ManageEmployee(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
+
+    public ManageEmployee(JPanel userProcessContainer, OrganizationDirectory orgdirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.orgdirectory=orgdirectory;
+        this.userProcessContainer = userProcessContainer;
+        this.orgdirectory = orgdirectory;
         displayCombo();
         selectCombo();
     }
-    private void populateTbl(Organization organization){
+
+    private void populateTbl(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) tblEmp.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmplist()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmplist()) {
             Object[] row = new Object[5];
             row[0] = employee;
             row[2] = employee.getempId();
@@ -43,24 +46,29 @@ public class ManageEmployee extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+
     //populate organization combo box
-    public void displayCombo(){
+    public void displayCombo() {
         comboOrg.removeAllItems();
-        
-        for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof DoctorOrganization)
-            comboOrg.addItem(organization);
+
+        for (Organization organization : orgdirectory.getOrganizationList()) {
+            if (organization instanceof DoctorOrganization) {
+                comboOrg.addItem(organization);
+            }
         }
     }
+
     //populate employee - hospital organization combo box
-    public void selectCombo(){
+    public void selectCombo() {
         comboOrgSelect.removeAllItems();
 
-        for (Organization organization : orgdirectory.getOrganizationList()){
-            if((organization instanceof DoctorOrganization))
-            comboOrgSelect.addItem(organization);
+        for (Organization organization : orgdirectory.getOrganizationList()) {
+            if ((organization instanceof DoctorOrganization)) {
+                comboOrgSelect.addItem(organization);
+            }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -268,7 +276,7 @@ public class ManageEmployee extends javax.swing.JPanel {
                         .addGap(31, 31, 31))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 407, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(132, 132, 132))))
         );
@@ -299,11 +307,11 @@ public class ManageEmployee extends javax.swing.JPanel {
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
         // TODO add your handling code here:
-        if(nametxt.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"FIELD CANNOT BE EMPTY");
-        }else{
+        if (nametxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "FIELD CANNOT BE EMPTY");
+        } else {
 
-            Organization organization =(Organization)comboOrgSelect.getSelectedItem();
+            Organization organization = (Organization) comboOrgSelect.getSelectedItem();
             String name = nametxt.getText();
 
             organization.getEmployeeDirectory().createEmployee(name);
@@ -316,11 +324,11 @@ public class ManageEmployee extends javax.swing.JPanel {
     private void nametxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nametxtKeyTyped
         // TODO add your handling code here:
         char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+        if (!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)) {
             evt.consume();
         }
         //Restrict the length to 256
-        if(nametxt.getText().length() > 255){
+        if (nametxt.getText().length() > 255) {
             evt.consume();
         }
     }//GEN-LAST:event_nametxtKeyTyped
@@ -328,14 +336,14 @@ public class ManageEmployee extends javax.swing.JPanel {
     private void comboOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgActionPerformed
         // TODO add your handling code here:
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateTbl(organization);
         }
     }//GEN-LAST:event_comboOrgActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         userProcessContainer.remove(this);
+        userProcessContainer.remove(this);
         CardLayout layout = (CardLayout) userProcessContainer.getLayout();
         layout.previous(userProcessContainer);
     }//GEN-LAST:event_jButton1ActionPerformed

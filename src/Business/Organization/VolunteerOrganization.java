@@ -14,12 +14,14 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class VolunteerOrganization extends Organization{
+public class VolunteerOrganization extends Organization {
+
     VolunteerDirectory volunteerList;
+
     //constructor to add volunteer list to volunteer directory
     public VolunteerOrganization(String name) {
         super(Organization.Type.Volunteer.getValue());
-        volunteerList= new VolunteerDirectory();
+        volunteerList = new VolunteerDirectory();
     }
 
     public VolunteerDirectory getVolunteerList() {
@@ -29,10 +31,11 @@ public class VolunteerOrganization extends Organization{
     public void setVolunteerList(VolunteerDirectory volunteerList) {
         this.volunteerList = volunteerList;
     }
+
     //hashmap to support volunteer role
     @Override
-    public HashSet<Role> getSupportedRole(){
+    public HashSet<Role> getSupportedRole() {
         role.add(new VolunteerRole());
-       return role;
+        return role;
     }
 }

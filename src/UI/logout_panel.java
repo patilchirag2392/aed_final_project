@@ -6,7 +6,7 @@ package UI;
 
 /**
  *
- * @author ruchi
+ * @author chiragpatil
  */
 public class logout_panel extends javax.swing.JPanel {
 

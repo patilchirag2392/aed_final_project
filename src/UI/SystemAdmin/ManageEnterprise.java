@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.SystemAdmin;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
@@ -11,7 +12,6 @@ import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
-
 
 /**
  *
@@ -24,15 +24,15 @@ public class ManageEnterprise extends javax.swing.JPanel {
      */
     private JPanel panelWorkArea;
     private Ecosystem system;
-    
-    public ManageEnterprise(JPanel userProcessContainer,Ecosystem system) {
+
+    public ManageEnterprise(JPanel userProcessContainer, Ecosystem system) {
         initComponents();
-        this.panelWorkArea=userProcessContainer;
-        this.system=system;
+        this.panelWorkArea = userProcessContainer;
+        this.system = system;
         populateTableEnterprise();
         populateCombo();
     }
-    
+
     private void populateCombo() {
         comboNetwork.removeAllItems();
         comboType.removeAllItems();
@@ -46,6 +46,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
         }
 
     }
+
     //populate enterprise table
     private void populateTableEnterprise() {
         DefaultTableModel model = (DefaultTableModel) tblEnterprise.getModel();
@@ -61,6 +62,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
             }
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -85,6 +87,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
         tblEnterprise = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 255, 204));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -221,6 +224,14 @@ public class ManageEnterprise extends javax.swing.JPanel {
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 560, 617, 302));
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 240, -1, -1));
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 90, 60, 60));
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/ezgif.com-gif-maker-3.png"))); // NOI18N
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 80, 60, 60));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
@@ -243,18 +254,17 @@ public class ManageEnterprise extends javax.swing.JPanel {
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
         // TODO add your handling code here:
-        int selectedRow= tblEnterprise.getSelectedRow();
-        if(selectedRow<0){
+        int selectedRow = tblEnterprise.getSelectedRow();
+        if (selectedRow < 0) {
             JOptionPane.showMessageDialog(null, "Please select the row to delete the account", "Warning", JOptionPane.WARNING_MESSAGE);
-        }
-        else{
+        } else {
 
-            Enterprise p=(Enterprise) tblEnterprise.getValueAt(selectedRow, 0);
+            Enterprise p = (Enterprise) tblEnterprise.getValueAt(selectedRow, 0);
 
             for (Network network : system.getNetworkList()) {
                 for (Enterprise enterprise : network.getEnterpriseDirectory().getEnterprise_list()) {
 
-                    if(p==enterprise){
+                    if (p == enterprise) {
                         network.getEnterpriseDirectory().getEnterprise_list().remove(p);
                         break;
                     }
@@ -267,6 +277,17 @@ public class ManageEnterprise extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        panelWorkArea.remove(this);
+        Component[] componentArray = panelWorkArea.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        SystemAdminWorkArea sysAdminwjp = (SystemAdminWorkArea) component;
+        //sysAdminwjp.populateTree();
+        CardLayout layout = (CardLayout) panelWorkArea.getLayout();
+        layout.previous(panelWorkArea);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
@@ -274,6 +295,7 @@ public class ManageEnterprise extends javax.swing.JPanel {
     private javax.swing.JComboBox comboNetwork;
     private javax.swing.JComboBox comboType;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

@@ -15,18 +15,17 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-
-
 public abstract class Organization {
-    
+
     private String name;
     private String orgName;
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     private int organizationCode;
-    private static int count=1;
+    private static int count = 1;
     public HashSet<Role> role;
+
     //enums for types of organization
     public enum Type {
         Victim("Victim Organization"),
@@ -37,26 +36,28 @@ public abstract class Organization {
         Doctor("Doctor"),
         Police("Police"),
         FireMan("FireMan");
-        
+
         private String value;
-        private Type(String value){
+
+        private Type(String value) {
             this.value = value;
         }
-        public String getValue(){
+
+        public String getValue() {
             return value;
         }
     }
+
     //constructor to update work queues, employee directory and user account
-    public Organization (String name)
-    {
-      this.name = name;
-      workQueue = new WorkQueue();
-      employeeDirectory = new EmployeeDirectory();
-      userAccountDirectory = new UserAccountDirectory();
-     
-      organizationCode = count;
-      role = new HashSet<>();
-      ++count;        
+    public Organization(String name) {
+        this.name = name;
+        workQueue = new WorkQueue();
+        employeeDirectory = new EmployeeDirectory();
+        userAccountDirectory = new UserAccountDirectory();
+
+        organizationCode = count;
+        role = new HashSet<>();
+        ++count;
     }
 
     public String getOrgName() {
@@ -66,31 +67,29 @@ public abstract class Organization {
     public void setOrgName(String orgName) {
         this.orgName = orgName;
     }
-    
-    public abstract HashSet<Role> getSupportedRole();
 
+    public abstract HashSet<Role> getSupportedRole();
 
     public void setUserAccountDirectory(UserAccountDirectory userAccountDirectory) {
         this.userAccountDirectory = userAccountDirectory;
     }
 
-    
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
     }
-    
-     public EmployeeDirectory getEmployeeDirectory() {
+
+    public EmployeeDirectory getEmployeeDirectory() {
         return employeeDirectory;
     }
 
     public void setEmployeeDirectory(EmployeeDirectory employeeDirectory) {
         this.employeeDirectory = employeeDirectory;
     }
-    
+
     public int getOrganizationCode() {
         return organizationCode;
     }
-    
+
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
@@ -98,7 +97,7 @@ public abstract class Organization {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
-    
+
     public String getName() {
         return name;
     }
@@ -106,21 +105,9 @@ public abstract class Organization {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     @Override
-    public String toString()
-    {
+    public String toString() {
         return name;
     }
 }
-
-
-
-
-
-
-
-
-
-
-

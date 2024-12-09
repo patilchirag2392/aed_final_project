@@ -15,13 +15,13 @@ import java.util.HashSet;
  * @author SUJAL DUSANE
  */
 public class EventMakerOrganization extends Organization {
-    
+
     EventMakerDirectory eventmaker_list;
+
     //constructor to add event maker list to Event Maker directory
-    public EventMakerOrganization()
-    {
+    public EventMakerOrganization() {
         super(Organization.Type.EventMaker.getValue());
-        eventmaker_list= new EventMakerDirectory();
+        eventmaker_list = new EventMakerDirectory();
     }
 
     public EventMakerDirectory getChangemakerlist() {
@@ -31,12 +31,12 @@ public class EventMakerOrganization extends Organization {
     public void setChangemakerlist(EventMakerDirectory eventmakerlist) {
         this.eventmaker_list = eventmakerlist;
     }
-    
+
     //hash map to support event maker role
     @Override
-    public HashSet<Role> getSupportedRole(){
-       role.add(new EventMakerRole());
-       return role;
-       
+    public HashSet<Role> getSupportedRole() {
+        role.add(new EventMakerRole());
+        return role;
+
     }
 }

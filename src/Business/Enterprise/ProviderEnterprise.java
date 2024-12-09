@@ -13,16 +13,18 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class ProviderEnterprise extends Enterprise{
-    public ProviderEnterprise(String name){
+public class ProviderEnterprise extends Enterprise {
+
+    public ProviderEnterprise(String name) {
         super(name, Enterprise.EnterpriseType.Provider);
-        
-    } 
+
+    }
+
     //hash map to for Provider role addition
     @Override
-    public HashSet<Role> getSupportedRole(){
+    public HashSet<Role> getSupportedRole() {
         new ProviderManagerRole();
         return role;
-        
+
     }
 }

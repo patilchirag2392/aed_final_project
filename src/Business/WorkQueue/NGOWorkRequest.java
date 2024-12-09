@@ -9,7 +9,8 @@ package Business.WorkQueue;
  *
  * @author SUJAL DUSANE
  */
-public class NGOWorkRequest extends WorkRequest{
+public class NGOWorkRequest extends WorkRequest {
+
     private String title;
     private String description;
     private String location;
@@ -17,11 +18,11 @@ public class NGOWorkRequest extends WorkRequest{
     private int vAcquired;
     private boolean add;
     private String volQty;
-    
+
     public NGOWorkRequest() {
-        
+
         add = false;
-        
+
     }
 
     public String getTitle() {
@@ -79,8 +80,8 @@ public class NGOWorkRequest extends WorkRequest{
     public void setAdd(boolean add) {
         this.add = add;
     }
-    
-    public String toString(){
+
+    public String toString() {
         return title;
     }
 }

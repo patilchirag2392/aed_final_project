@@ -12,11 +12,12 @@ import java.util.ArrayList;
  * @author Reema
  */
 public class FireManDirectory {
+
     private ArrayList<FireMan> fireman_list;
 
     public FireManDirectory() {
-        fireman_list=new ArrayList();
-        
+        fireman_list = new ArrayList();
+
     }
 
     public ArrayList<FireMan> getFireman_list() {
@@ -26,15 +27,16 @@ public class FireManDirectory {
     public void setPoliceList(ArrayList<FireMan> fireManList) {
         this.fireman_list = fireManList;
     }
-    
+
     //add new fire man
-    public FireMan addFireMan(){
-        FireMan l= new FireMan();
+    public FireMan addFireMan() {
+        FireMan l = new FireMan();
         fireman_list.add(l);
         return l;
     }
+
     //remove a fire man
-    public void removeFireMan(FireMan l){
+    public void removeFireMan(FireMan l) {
         fireman_list.remove(l);
     }
 }

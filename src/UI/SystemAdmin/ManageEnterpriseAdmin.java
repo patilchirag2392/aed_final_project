@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.SystemAdmin;
+
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -31,13 +32,15 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
      */
     private JPanel panelWorkArea;
     private Ecosystem system;
-    public ManageEnterpriseAdmin(JPanel userProcessContainer,Ecosystem system) {
+
+    public ManageEnterpriseAdmin(JPanel userProcessContainer, Ecosystem system) {
         initComponents();
-        this.panelWorkArea=userProcessContainer;
-        this.system=system;
+        this.panelWorkArea = userProcessContainer;
+        this.system = system;
         populateTableEnterpriseAdmin();
         populateComboBoxNetwork();
     }
+
     private void populateTableEnterpriseAdmin() {
         DefaultTableModel model = (DefaultTableModel) tblEnterprise.getModel();
 
@@ -55,6 +58,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             }
         }
     }
+
     //populate user admins
     private void populateComboBoxNetwork() {
         comboNetwork.removeAllItems();
@@ -63,6 +67,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             comboNetwork.addItem(network);
         }
     }
+
     //populate enterprise - employee combo
     private void populateComboBoxEnterprise(Network network) {
         comboType.removeAllItems();
@@ -72,6 +77,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
         }
 
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -262,14 +268,13 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
         add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 480, 560, 330));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UI/Images/ezgif.com-gif-maker-3.png"))); // NOI18N
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1160, 10, 60, 60));
-
-        jLabel7.setText("jLabel7");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 90, 550, 360));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -295,7 +300,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new PoliceAdminRole());
             } else if (enterprise.getEnterprise_type() == Enterprise.EnterpriseType.Hospital) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new DoctorAdminRole());
-            }else if (enterprise.getEnterprise_type() == Enterprise.EnterpriseType.FireMan) {
+            } else if (enterprise.getEnterprise_type() == Enterprise.EnterpriseType.FireMan) {
                 account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new FireManAdminRole());
             }
 
@@ -303,8 +308,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
             txtUsername.setText("");
             txtPasword.setText("");
             txtAdmin.setText("");
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnAddActionPerformed
@@ -337,7 +341,7 @@ public class ManageEnterpriseAdmin extends javax.swing.JPanel {
 
     private void comboNetworkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboNetworkActionPerformed
         // TODO add your handling code here:
-        Network network = (Network)comboNetwork.getSelectedItem();
+        Network network = (Network) comboNetwork.getSelectedItem();
         if (network != null) {
             populateComboBoxEnterprise(network);
         }

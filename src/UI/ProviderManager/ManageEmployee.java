@@ -23,20 +23,22 @@ public class ManageEmployee extends javax.swing.JPanel {
      */
     private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
-    public ManageEmployee(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
-        initComponents();   
-        this.userProcessContainer=userProcessContainer;
-        this.orgdirectory=orgdirectory;
+
+    public ManageEmployee(JPanel userProcessContainer, OrganizationDirectory orgdirectory) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.orgdirectory = orgdirectory;
         populateComboOrganization();
         populateComboOrganizationEmp();
     }
+
     //populate provider manager employee table by adding employees
-    private void populateTbl(Organization organization){
+    private void populateTbl(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) tblEmp.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmplist()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmplist()) {
             Object[] row = new Object[5];
             row[0] = employee;
             row[2] = employee.getempId();
@@ -44,20 +46,21 @@ public class ManageEmployee extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+
     //populate organization combo box
-    public void populateComboOrganization(){
+    public void populateComboOrganization() {
         comboOrg.removeAllItems();
-        
-        for (Organization organization : orgdirectory.getOrganizationList()){
+
+        for (Organization organization : orgdirectory.getOrganizationList()) {
             comboOrg.addItem(organization);
         }
     }
-    
-     //populate employee - provider manager organization combo box
-    public void populateComboOrganizationEmp(){
+
+    //populate employee - provider manager organization combo box
+    public void populateComboOrganizationEmp() {
         comboOrgSelect.removeAllItems();
 
-        for (Organization organization : orgdirectory.getOrganizationList()){
+        for (Organization organization : orgdirectory.getOrganizationList()) {
             comboOrgSelect.addItem(organization);
         }
     }
@@ -235,11 +238,11 @@ public class ManageEmployee extends javax.swing.JPanel {
 
     private void btnAddEmployeeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmployeeActionPerformed
         // TODO add your handling code here:
-        if(txtName.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Please fill the Empty fields");
-        }else{
+        if (txtName.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please fill the Empty fields");
+        } else {
 
-            Organization organization =(Organization)comboOrgSelect.getSelectedItem();
+            Organization organization = (Organization) comboOrgSelect.getSelectedItem();
             String name = txtName.getText();
 
             organization.getEmployeeDirectory().createEmployee(name);
@@ -252,11 +255,11 @@ public class ManageEmployee extends javax.swing.JPanel {
     private void txtNameKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNameKeyTyped
         // TODO add your handling code here:
         char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+        if (!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)) {
             evt.consume();
         }
         //Restrict the length to 256
-        if(txtName.getText().length() > 255){
+        if (txtName.getText().length() > 255) {
             evt.consume();
         }
     }//GEN-LAST:event_txtNameKeyTyped
@@ -264,7 +267,7 @@ public class ManageEmployee extends javax.swing.JPanel {
     private void comboOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgActionPerformed
         // TODO add your handling code here:
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateTbl(organization);
         }
     }//GEN-LAST:event_comboOrgActionPerformed

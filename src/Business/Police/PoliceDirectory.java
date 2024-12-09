@@ -11,11 +11,12 @@ import java.util.ArrayList;
  * @author Reema
  */
 public class PoliceDirectory {
-     private ArrayList<Police> policeList;
+
+    private ArrayList<Police> policeList;
 
     public PoliceDirectory() {
-        policeList=new ArrayList();
-        
+        policeList = new ArrayList();
+
     }
 
     public ArrayList<Police> getPoliceList() {
@@ -25,15 +26,16 @@ public class PoliceDirectory {
     public void setPoliceList(ArrayList<Police> policeList) {
         this.policeList = policeList;
     }
-    
+
     //add a new police 
-    public Police addPolice(){
-        Police l= new Police();
+    public Police addPolice() {
+        Police l = new Police();
         policeList.add(l);
         return l;
     }
+
     //remove police
-    public void removePolice(Police l){
+    public void removePolice(Police l) {
         policeList.remove(l);
     }
 }

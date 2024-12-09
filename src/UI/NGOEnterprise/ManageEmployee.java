@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.NGOEnterprise;
+
 import Business.Employee.Employee;
 
 import Business.Organization.NGOOrganization;
@@ -12,6 +13,7 @@ import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author SUJAL DUSANE
@@ -23,19 +25,21 @@ public class ManageEmployee extends javax.swing.JPanel {
      */
     private OrganizationDirectory orgdirectory;
     private JPanel userProcessContainer;
-    public ManageEmployee(JPanel userProcessContainer,OrganizationDirectory orgdirectory) {
+
+    public ManageEmployee(JPanel userProcessContainer, OrganizationDirectory orgdirectory) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.orgdirectory=orgdirectory;
+        this.userProcessContainer = userProcessContainer;
+        this.orgdirectory = orgdirectory;
         displayCombo();
         selectCombo();
     }
-    private void populateTbl(Organization organization){
+
+    private void populateTbl(Organization organization) {
         DefaultTableModel model = (DefaultTableModel) tblEmp.getModel();
-        
+
         model.setRowCount(0);
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmplist()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmplist()) {
             Object[] row = new Object[5];
             row[0] = employee;
             row[2] = employee.getempId();
@@ -43,22 +47,26 @@ public class ManageEmployee extends javax.swing.JPanel {
             model.addRow(row);
         }
     }
+
     //populate organization combo box
-    public void displayCombo(){
+    public void displayCombo() {
         comboOrg.removeAllItems();
-        
-        for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof NGOOrganization)
-            comboOrg.addItem(organization);
+
+        for (Organization organization : orgdirectory.getOrganizationList()) {
+            if (organization instanceof NGOOrganization) {
+                comboOrg.addItem(organization);
+            }
         }
     }
-     //populate employee - ngo organization combo box
-    public void selectCombo(){
+    //populate employee - ngo organization combo box
+
+    public void selectCombo() {
         comboOrgSelect.removeAllItems();
 
-        for (Organization organization : orgdirectory.getOrganizationList()){
-            if(organization instanceof NGOOrganization)
-            comboOrgSelect.addItem(organization);
+        for (Organization organization : orgdirectory.getOrganizationList()) {
+            if (organization instanceof NGOOrganization) {
+                comboOrgSelect.addItem(organization);
+            }
         }
     }
 
@@ -246,11 +254,11 @@ public class ManageEmployee extends javax.swing.JPanel {
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         // TODO add your handling code here:
-        if(nametxt.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"FIELD CANNOT BE EMPTY");
-        }else{
+        if (nametxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "FIELD CANNOT BE EMPTY");
+        } else {
 
-            Organization organization =(Organization)comboOrgSelect.getSelectedItem();
+            Organization organization = (Organization) comboOrgSelect.getSelectedItem();
             String name = nametxt.getText();
 
             organization.getEmployeeDirectory().createEmployee(name);
@@ -263,11 +271,11 @@ public class ManageEmployee extends javax.swing.JPanel {
     private void nametxtKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nametxtKeyTyped
         // TODO add your handling code here:
         char typedName = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)){
+        if (!Character.isAlphabetic(typedName) && !Character.isWhitespace(typedName)) {
             evt.consume();
         }
         //Restrict the length to 256
-        if(nametxt.getText().length() > 250){
+        if (nametxt.getText().length() > 250) {
             evt.consume();
         }
     }//GEN-LAST:event_nametxtKeyTyped
@@ -282,7 +290,7 @@ public class ManageEmployee extends javax.swing.JPanel {
     private void comboOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgActionPerformed
         // TODO add your handling code here:
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateTbl(organization);
         }
     }//GEN-LAST:event_comboOrgActionPerformed

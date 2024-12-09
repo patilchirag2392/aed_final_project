@@ -4,7 +4,6 @@
  */
 package UI.PoliceEnterprise;
 
-
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
@@ -22,13 +21,13 @@ public class PoliceAdminWorkArea extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Ecosystem system;
     private Enterprise enterprise;
-    
-    public PoliceAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise, Ecosystem ecosystem) {
+
+    public PoliceAdminWorkArea(JPanel userProcessContainer, Enterprise enterprise, Ecosystem ecosystem) {
         initComponents();
-        this.enterprise=enterprise;
-        this.userProcessContainer=userProcessContainer;
-        this.system=system;
-       
+        this.enterprise = enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
+
     }
 
     /**
@@ -162,8 +161,6 @@ public class PoliceAdminWorkArea extends javax.swing.JPanel {
         );
 
         jPanel1.add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 280, -1, -1));
-
-        jLabel6.setText("jLabel6");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 310, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

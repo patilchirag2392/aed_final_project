@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.NGOEnterprise;
+
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -25,15 +26,17 @@ public class ManageUserAccount extends javax.swing.JPanel {
     /**
      * Creates new form ManageUserAccount
      */
-     private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private Enterprise enterprise;
-    public ManageUserAccount(JPanel userProcessContainer,Enterprise enterprise) {
+
+    public ManageUserAccount(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
         displayCombo();
         selectCombo();
     }
+
     public void displayCombo() {
         comboOrg.removeAllItems();
 
@@ -41,23 +44,26 @@ public class ManageUserAccount extends javax.swing.JPanel {
             comboOrg.addItem(organization);
         }
     }
-     //populate respective employees
-    public void populateComboEmployee(Organization organization){
+    //populate respective employees
+
+    public void populateComboEmployee(Organization organization) {
         comboEmp.removeAllItems();
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmplist()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmplist()) {
             comboEmp.addItem(employee);
         }
     }
+
     //populate respective roles
-    private void populateComboRole(Enterprise e){
+    private void populateComboRole(Enterprise e) {
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof NGOOrganization){
+        if (organization instanceof NGOOrganization) {
             comboRole.addItem(new NGOManagerRole());
         }
-      
+
     }
+
     //populate username and roles in table
     public void selectCombo() {
 
@@ -292,12 +298,12 @@ public class ManageUserAccount extends javax.swing.JPanel {
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         // TODO add your handling code here:
-        if(uname.getText().isEmpty()|| pword.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"FIELD CANNOT BE EMPTY");
-        }else{
+        if (uname.getText().isEmpty() || pword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "FIELD CANNOT BE EMPTY");
+        } else {
             String userName = uname.getText();
             String password = pword.getText();
-            if(Ecosystem.checkIfUsernameIsUnique(userName)){
+            if (Ecosystem.checkIfUsernameIsUnique(userName)) {
                 Organization organization = (Organization) comboOrg.getSelectedItem();
                 Employee employee = (Employee) comboEmp.getSelectedItem();
                 Role role = (Role) comboRole.getSelectedItem();
@@ -306,8 +312,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
                 selectCombo();
                 uname.setText("");
                 pword.setText("");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -316,7 +321,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void comboOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgActionPerformed
         // TODO add your handling code here:
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateComboEmployee(organization);
             populateComboRole(enterprise);
         }

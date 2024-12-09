@@ -11,44 +11,46 @@ import Business.WorkQueue.WorkQueue;
  * @author Reema
  */
 public class Volunteer {
+
     private String volName;
-private String volId;
-private static int c=1;
-private WorkQueue workqueue;
+    private String volId;
+    private static int c = 1;
+    private WorkQueue workqueue;
 //Volunteer class constructor to autogenerate volId
-public Volunteer() {
-    volId="Vol"+(++c);
-    workqueue= new WorkQueue();
-}
 
-public String getvolName() {
-    return volName;
-}
+    public Volunteer() {
+        volId = "Vol" + (++c);
+        workqueue = new WorkQueue();
+    }
 
-public void setvolName(String volName) {
-    this.volName = volName;
-}
+    public String getvolName() {
+        return volName;
+    }
 
-public WorkQueue getWorkqueue() {
-    return workqueue;
-}
+    public void setvolName(String volName) {
+        this.volName = volName;
+    }
 
-public void setWorkqueue(WorkQueue workqueue) {
-    this.workqueue = workqueue;
-}
+    public WorkQueue getWorkqueue() {
+        return workqueue;
+    }
 
-public String getvolId() {
-    return volId;
-}
+    public void setWorkqueue(WorkQueue workqueue) {
+        this.workqueue = workqueue;
+    }
 
-public void setvolId(String volId) {
-    this.volId = volId;
-}
+    public String getvolId() {
+        return volId;
+    }
 
-@Override
-public String toString(){
-return volName;
+    public void setvolId(String volId) {
+        this.volId = volId;
+    }
 
-}
-    
+    @Override
+    public String toString() {
+        return volName;
+
+    }
+
 }

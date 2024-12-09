@@ -8,14 +8,14 @@ import java.util.ArrayList;
 
 /**
  *
- * @author reema
+ * @author Reema
  */
 public class HospitalDirectory {
-    
+
     private ArrayList<Hospital> hospital_directory;
-    
+
     public HospitalDirectory() {
-    hospital_directory= new ArrayList();
+        hospital_directory = new ArrayList();
     }
 
     public ArrayList<Hospital> getHospital_directory() {
@@ -25,15 +25,17 @@ public class HospitalDirectory {
     public void setHospital_directory(ArrayList<Hospital> hospital_directory) {
         this.hospital_directory = hospital_directory;
     }
+
     //add a new doctor
-    public Hospital addHospital(){
-        Hospital hosp =new Hospital();
+    public Hospital addHospital() {
+        Hospital hosp = new Hospital();
         hospital_directory.add(hosp);
         return hosp;
     }
+
     //remove a doctor
-    public void removeHospital(Hospital hospital){
-        hospital_directory.remove(hospital);   
+    public void removeHospital(Hospital hospital) {
+        hospital_directory.remove(hospital);
     }
-    
+
 }

@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.HospitalEnterprise;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import UI.EventMaker.ManageEmployee;
@@ -10,7 +11,6 @@ import UI.EventMaker.ManageOrganization;
 import UI.EventMaker.ManageUserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
-
 
 /**
  *
@@ -21,15 +21,15 @@ public class HospitalAdminWorkArea extends javax.swing.JPanel {
     /**
      * Creates new form HospitalAdminWorkArea
      */
-     private JPanel userProcessContainer;
+    private JPanel userProcessContainer;
     private Ecosystem system;
     private Enterprise enterprise;
-    
-    public HospitalAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise, Ecosystem ecosystem) {
+
+    public HospitalAdminWorkArea(JPanel userProcessContainer, Enterprise enterprise, Ecosystem ecosystem) {
         initComponents();
-        this.enterprise=enterprise;
-        this.userProcessContainer=userProcessContainer;
-        this.system=system;
+        this.enterprise = enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
     }
 
     /**

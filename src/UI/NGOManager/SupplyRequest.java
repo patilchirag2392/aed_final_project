@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.NGOManager;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.Organization;
@@ -37,36 +38,36 @@ public class SupplyRequest extends javax.swing.JPanel {
     private Enterprise enterprise;
     private Ecosystem system;
     private Provider p;
-    public SupplyRequest(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
+
+    public SupplyRequest(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.organization=(Organization)organization;
-        this.enterprise=enterprise;
-        this.system=system;
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = (Organization) organization;
+        this.enterprise = enterprise;
+        this.system = system;
         populateTableNGOWorkQueue();
     }
-     public void populateTableNGOWorkQueue()
-    {
-      DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
-        
+
+    public void populateTableNGOWorkQueue() {
+        DefaultTableModel model = (DefaultTableModel) tblReq.getModel();
+
         model.setRowCount(0);
-        
-       
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-           if(work instanceof ProviderWorkRequest){ 
-            Object[] row = new Object[10];
-            row[0] = ((ProviderWorkRequest) work).getRtype();
-            row[1] = ((ProviderWorkRequest) work).getReq();
-            row[2] = ((ProviderWorkRequest) work).getQuantity();
-            row[3] = work;
-            row[4] = work.getSender();
-            
-            
-            model.addRow(row);
-           }
-        }   
+
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof ProviderWorkRequest) {
+                Object[] row = new Object[10];
+                row[0] = ((ProviderWorkRequest) work).getRtype();
+                row[1] = ((ProviderWorkRequest) work).getReq();
+                row[2] = ((ProviderWorkRequest) work).getQuantity();
+                row[3] = work;
+                row[4] = work.getSender();
+
+                model.addRow(row);
+            }
+        }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -244,8 +245,6 @@ public class SupplyRequest extends javax.swing.JPanel {
         );
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 20, 1158, -1));
-
-        jLabel5.setText("jLabel5");
         add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 170, 382, -1));
     }// </editor-fold>//GEN-END:initComponents
 
@@ -253,49 +252,48 @@ public class SupplyRequest extends javax.swing.JPanel {
         // TODO add your handling code here:
         DefaultCategoryDataset d = new DefaultCategoryDataset();
 
-        int b=0;
-        int c=0;
-        int m=0;
-        int n=0;
-        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()){
-            if(work instanceof ProviderWorkRequest)
-            {
+        int b = 0;
+        int c = 0;
+        int m = 0;
+        int n = 0;
+        for (WorkRequest work : organization.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof ProviderWorkRequest) {
 
-                if(((ProviderWorkRequest) work).getRtype().equals("Food")){
-                    b=b+((ProviderWorkRequest) work).getQuantity();
+                if (((ProviderWorkRequest) work).getRtype().equals("Food")) {
+                    b = b + ((ProviderWorkRequest) work).getQuantity();
                 }
-                if(((ProviderWorkRequest) work).getRtype().equals("Clothes")){
-                    c=c+((ProviderWorkRequest) work).getQuantity();
+                if (((ProviderWorkRequest) work).getRtype().equals("Clothes")) {
+                    c = c + ((ProviderWorkRequest) work).getQuantity();
                 }
-                if(((ProviderWorkRequest) work).getRtype().equals("Medicine")){
-                    m=m+((ProviderWorkRequest) work).getQuantity();
+                if (((ProviderWorkRequest) work).getRtype().equals("Medicine")) {
+                    m = m + ((ProviderWorkRequest) work).getQuantity();
                 }
-                if(((ProviderWorkRequest) work).getRtype().equals("Education")){
-                    n=n+((ProviderWorkRequest) work).getQuantity();
+                if (((ProviderWorkRequest) work).getRtype().equals("Education")) {
+                    n = n + ((ProviderWorkRequest) work).getQuantity();
                 }
             }
         }
-        d.setValue(b, "Request Type","Food");
-        d.setValue(c, "Request Type","Clothes");
-        d.setValue(m, "Request Type","Medicine");
-        d.setValue(n, "Request Type","Education");
+        d.setValue(b, "Request Type", "Food");
+        d.setValue(c, "Request Type", "Clothes");
+        d.setValue(m, "Request Type", "Medicine");
+        d.setValue(n, "Request Type", "Education");
 
         JFreeChart chart = ChartFactory.createBarChart("Request Fulfilled", "Request Type", "type", d, PlotOrientation.VERTICAL, false, true, false);
         CategoryPlot p = chart.getCategoryPlot();
         p.setRangeGridlinePaint(Color.black);
-        ChartFrame f = new ChartFrame("Request Analysis",chart);
+        ChartFrame f = new ChartFrame("Request Analysis", chart);
         f.setVisible(true);
-        f.setSize(500,400);
+        f.setSize(500, 400);
     }//GEN-LAST:event_btnBarChartActionPerformed
 
     private void txtReqKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtReqKeyTyped
         // TODO add your handling code here:
         char typedReq = evt.getKeyChar();
-        if(!Character.isAlphabetic(typedReq) && !Character.isWhitespace(typedReq)){
+        if (!Character.isAlphabetic(typedReq) && !Character.isWhitespace(typedReq)) {
             evt.consume();
         }
         //Restrict the length to 256
-        if(txtReq.getText().length() > 255){
+        if (txtReq.getText().length() > 255) {
             evt.consume();
         }
     }//GEN-LAST:event_txtReqKeyTyped
@@ -303,23 +301,22 @@ public class SupplyRequest extends javax.swing.JPanel {
     private void txtQntKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtQntKeyTyped
         // TODO add your handling code here:
         char typedQnt = evt.getKeyChar();
-        if(!Character.isDigit(typedQnt)){
+        if (!Character.isDigit(typedQnt)) {
             evt.consume();
         }
         //Restrict the length to 5
-        if(txtQnt.getText().length() > 4){
+        if (txtQnt.getText().length() > 4) {
             evt.consume();
         }
     }//GEN-LAST:event_txtQntKeyTyped
 
     private void btnSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubmitActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             String rType = comboType.getSelectedItem().toString();
-            String req =   txtReq.getText();
+            String req = txtReq.getText();
             int quantity = Integer.parseInt(txtQnt.getText());
-            if(rType.equals("") || rType.isEmpty() && req.equals("") || req.isEmpty())
-            {
+            if (rType.equals("") || rType.isEmpty() && req.equals("") || req.isEmpty()) {
                 JOptionPane.showMessageDialog(null, "Please enter valid request");
                 return;
             }
@@ -339,9 +336,8 @@ public class SupplyRequest extends javax.swing.JPanel {
 
             txtReq.setText("");
             txtQnt.setText("");
+        } catch (NumberFormatException e) {
         }
-
-        catch(NumberFormatException e){}
 
     }//GEN-LAST:event_btnSubmitActionPerformed
 

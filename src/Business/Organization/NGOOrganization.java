@@ -14,13 +14,14 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class NGOOrganization extends Organization{
+public class NGOOrganization extends Organization {
+
     NGODirectory ngolist;
+
     //constructor to add NGO list to NGO directory
-    public NGOOrganization()
-    {
+    public NGOOrganization() {
         super(Organization.Type.NGO.getValue());
-        ngolist=new NGODirectory();
+        ngolist = new NGODirectory();
     }
 
     public NGODirectory getNgolist() {
@@ -30,11 +31,12 @@ public class NGOOrganization extends Organization{
     public void setNgolist(NGODirectory ngolist) {
         this.ngolist = ngolist;
     }
+
     //hashmap to support NGO role
     @Override
-    public HashSet<Role> getSupportedRole(){
-       role.add(new NGOManagerRole());
-       return role;
-       
+    public HashSet<Role> getSupportedRole() {
+        role.add(new NGOManagerRole());
+        return role;
+
     }
 }

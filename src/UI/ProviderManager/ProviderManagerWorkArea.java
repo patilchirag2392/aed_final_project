@@ -4,7 +4,6 @@
  */
 package UI.ProviderManager;
 
-
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import java.awt.CardLayout;
@@ -22,13 +21,13 @@ public class ProviderManagerWorkArea extends javax.swing.JPanel {
     private JPanel userProcessContainer;
     private Ecosystem system;
     private Enterprise enterprise;
-    
-    public ProviderManagerWorkArea(JPanel userProcessContainer,Enterprise enterprise, Ecosystem ecosystem) {
+
+    public ProviderManagerWorkArea(JPanel userProcessContainer, Enterprise enterprise, Ecosystem ecosystem) {
         initComponents();
-        this.enterprise=enterprise;
-        this.userProcessContainer=userProcessContainer;
-        this.system=system;
-       
+        this.enterprise = enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.system = system;
+
     }
 
     /**

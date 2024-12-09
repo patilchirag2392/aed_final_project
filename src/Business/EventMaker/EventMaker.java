@@ -11,16 +11,18 @@ import Business.WorkQueue.WorkQueue;
  * @author SUJAL DUSANE
  */
 public class EventMaker {
+
     private String evenName;
     private String evenid;
     private WorkQueue workQueue;
-    
-    private static int c=1;
+
+    private static int c = 1;
+
     //Event maker class constructor
-     public EventMaker(){
-         
-        evenid= "EM"+(++c);
-        workQueue=new WorkQueue();
+    public EventMaker() {
+
+        evenid = "EM" + (++c);
+        workQueue = new WorkQueue();
     }
 
     public WorkQueue getWorkQueue() {
@@ -30,7 +32,7 @@ public class EventMaker {
     public void setWorkQueue(WorkQueue workQueue) {
         this.workQueue = workQueue;
     }
-    
+
     public String getevenid() {
         return evenid;
     }
@@ -38,7 +40,7 @@ public class EventMaker {
     public void setevenid(String evenid) {
         this.evenid = evenid;
     }
-     
+
     public String getevenName() {
         return evenName;
     }
@@ -47,9 +49,9 @@ public class EventMaker {
         this.evenName = evenName;
     }
 
-     @Override
-     public String toString(){
-         return evenName;
-     }
-    
+    @Override
+    public String toString() {
+        return evenName;
+    }
+
 }

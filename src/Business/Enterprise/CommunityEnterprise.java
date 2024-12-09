@@ -15,21 +15,23 @@ import Business.Role.VictimAdminRole;
  *
  * @author SUJAL DUSANE
  */
-public class CommunityEnterprise extends Enterprise{
-    public CommunityEnterprise(String ent_name){
-        super(ent_name,Enterprise.EnterpriseType.Community);
+public class CommunityEnterprise extends Enterprise {
+
+    public CommunityEnterprise(String ent_name) {
+        super(ent_name, Enterprise.EnterpriseType.Community);
     }
+
     //Hash map to add rolesss
     @Override
-    public HashSet<Role> getSupportedRole(){
-       
+    public HashSet<Role> getSupportedRole() {
+
         role.add(new EventMakerAdminRole());
-              
+
         role.add(new VictimAdminRole());
-        
+
         role.add(new VolunteerAdminRole());
-       
+
         return role;
-        
+
     }
 }

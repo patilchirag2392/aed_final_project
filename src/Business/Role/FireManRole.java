@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Business.Role;
+
 import Business.Ecosystem;
 import Business.Enterprise.Enterprise;
 import Business.Organization.FireManOrganization;

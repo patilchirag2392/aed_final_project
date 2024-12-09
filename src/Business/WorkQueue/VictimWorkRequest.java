@@ -9,13 +9,14 @@ package Business.WorkQueue;
  *
  * @author SUJAL DUSANE
  */
-public class VictimWorkRequest extends WorkRequest{
+public class VictimWorkRequest extends WorkRequest {
+
     private String Description;
     private String Location;
     private boolean add;
-    
+
     public VictimWorkRequest() {
-        
+
         add = false;
     }
 

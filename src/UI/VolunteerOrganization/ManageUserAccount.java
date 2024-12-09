@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package UI.VolunteerOrganization;
+
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -28,41 +29,47 @@ public class ManageUserAccount extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    public ManageUserAccount(JPanel userProcessContainer,Enterprise enterprise) {
+
+    public ManageUserAccount(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.enterprise=enterprise;
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
         populateComboOrganization();
         populateData();
 
     }
-     public void populateComboOrganization() {
+
+    public void populateComboOrganization() {
         comboOrg.removeAllItems();
 
         for (Organization organization : enterprise.getOrganization_directory().getOrganizationList()) {
-            if(organization instanceof VolunteerOrganization)
-            comboOrg.addItem(organization);
-            
+            if (organization instanceof VolunteerOrganization) {
+                comboOrg.addItem(organization);
+            }
+
         }
     }
+
     //populate respective employees
-    public void populateComboEmployee(Organization organization){
+    public void populateComboEmployee(Organization organization) {
         comboEmp.removeAllItems();
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmplist()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmplist()) {
             comboEmp.addItem(employee);
         }
     }
+
     //populate respective roles
-    private void populateComboRole(Enterprise e){
+    private void populateComboRole(Enterprise e) {
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof VolunteerOrganization){
+        if (organization instanceof VolunteerOrganization) {
             comboRole.addItem(new VolunteerRole());
-        
+
         }
-      
+
     }
+
     public void populateData() {
 
         DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
@@ -321,17 +328,17 @@ public class ManageUserAccount extends javax.swing.JPanel {
 
     private void btnAddUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddUserActionPerformed
         // TODO add your handling code here:
-        if(txtName.getText().isEmpty()|| txtPassword.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"Text Field Cannot be Empty");
-        }else{
+        if (txtName.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Text Field Cannot be Empty");
+        } else {
             String userName = txtName.getText();
             String password = txtPassword.getText();
-            if(Ecosystem.checkIfUsernameIsUnique(userName)){
+            if (Ecosystem.checkIfUsernameIsUnique(userName)) {
                 Organization organization = (Organization) comboOrg.getSelectedItem();
                 Employee employee = (Employee) comboEmp.getSelectedItem();
                 Role role = (Role) comboRole.getSelectedItem();
 
-                if (organization instanceof VolunteerOrganization){
+                if (organization instanceof VolunteerOrganization) {
                     Volunteer vt = new Volunteer();
 
                     vt.setvolName(employee.getempName());
@@ -343,8 +350,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
                 populateData();
                 txtName.setText("");
                 txtPassword.setText("");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Please enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -353,7 +359,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void comboOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgActionPerformed
         // TODO add your handling code here:
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateComboEmployee(organization);
             populateComboRole(enterprise);
         }

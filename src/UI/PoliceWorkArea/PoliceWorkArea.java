@@ -20,51 +20,51 @@ import javax.swing.table.DefaultTableModel;
  * @author SUJAL DUSANE
  */
 public class PoliceWorkArea extends javax.swing.JPanel {
+
     private JPanel userProcessContainer;
     private UserAccount account;
     private Organization organization;
     private Enterprise enterprise;
     private Ecosystem system;
     PoliceOrganization policeOrganization;
+
     /**
      * Creates new form PoliceWorkArea
      */
-    public PoliceWorkArea(JPanel userProcessContainer,UserAccount account,Organization organization,Enterprise enterprise,Ecosystem system) {
+    public PoliceWorkArea(JPanel userProcessContainer, UserAccount account, Organization organization, Enterprise enterprise, Ecosystem system) {
         initComponents();
-        this.userProcessContainer=userProcessContainer;
-        this.account=account;
-        this.organization=organization;
-        this.enterprise=enterprise;
-        this.system=system;
-        
-         populatePoliceTable();
+        this.userProcessContainer = userProcessContainer;
+        this.account = account;
+        this.organization = organization;
+        this.enterprise = enterprise;
+        this.system = system;
+
+        populatePoliceTable();
     }
 
     //victim request to police is populated here
-    public void populatePoliceTable(){
+    public void populatePoliceTable() {
 
-         DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
-        
+        DefaultTableModel model = (DefaultTableModel) tblRequests.getModel();
+
         model.setRowCount(0);
-        
-        
-        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()){
-           if(work instanceof VictimWorkRequest){
-               if((work.getStatus().equalsIgnoreCase("Assigned To Police"))||(work.getStatus().equalsIgnoreCase("Police assigned the Request"))){
-                   
-               
-            Object[] row = new Object[10];
-            row[0] = work.getSender().getEmployee().getempName();
-            row[1] = work.getSubject();
-            row[2] = ((VictimWorkRequest) work).getDescription();
-            row[3] = ((VictimWorkRequest) work).getLocation();
-            row[4] = work.getRequestDate();
-            row[5] = work;
-            row[6] = work.getReciever();
-            
-            model.addRow(row);
-           }
-        }
+
+        for (WorkRequest work : system.getWorkQueue().getWorkRequestList()) {
+            if (work instanceof VictimWorkRequest) {
+                if ((work.getStatus().equalsIgnoreCase("Assigned To Police")) || (work.getStatus().equalsIgnoreCase("Police assigned the Request"))) {
+
+                    Object[] row = new Object[10];
+                    row[0] = work.getSender().getEmployee().getempName();
+                    row[1] = work.getSubject();
+                    row[2] = ((VictimWorkRequest) work).getDescription();
+                    row[3] = ((VictimWorkRequest) work).getLocation();
+                    row[4] = work.getRequestDate();
+                    row[5] = work;
+                    row[6] = work.getReciever();
+
+                    model.addRow(row);
+                }
+            }
         }
     }
 
@@ -185,13 +185,12 @@ public class PoliceWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest cswr = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-            if(cswr.getStatus().equalsIgnoreCase("Assigned To Police")){
+            if (cswr.getStatus().equalsIgnoreCase("Assigned To Police")) {
                 cswr.setStatus("Police assigned the Request");
                 cswr.setReciever(account);
 
                 populatePoliceTable();
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -205,13 +204,12 @@ public class PoliceWorkArea extends javax.swing.JPanel {
         } else {
 
             VictimWorkRequest p = (VictimWorkRequest) tblRequests.getValueAt(selectedRow, 5);
-            if(p.getStatus().equalsIgnoreCase("Police assigned the Request")){
+            if (p.getStatus().equalsIgnoreCase("Police assigned the Request")) {
                 p.setStatus("Complete");
                 p.setReciever(account);
                 JOptionPane.showMessageDialog(null, "You have completed the request successfully");
                 populatePoliceTable();
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Wrong Request", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }

@@ -12,17 +12,19 @@ import Business.WorkQueue.WorkQueue;
  * @author Reema
  */
 public class FireMan {
+
     private String f_name;
-    private static int Count=1;
+    private static int Count = 1;
     private String f_id;
     private WorkQueue work_queue;
+
     //Fire man constructor which automatically generates id
     public FireMan() {
-        
-        f_id = "FireMan"+(++Count);
-        work_queue= new WorkQueue();
+
+        f_id = "FireMan" + (++Count);
+        work_queue = new WorkQueue();
     }
-    
+
     public static int getCount() {
         return Count;
     }
@@ -54,10 +56,9 @@ public class FireMan {
     public void setWork_queue(WorkQueue work_queue) {
         this.work_queue = work_queue;
     }
-       
-    
-        @Override
-    public String toString(){
+
+    @Override
+    public String toString() {
         return f_name;
     }
 }

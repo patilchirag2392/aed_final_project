@@ -11,10 +11,11 @@ import java.util.ArrayList;
  * @author Reema
  */
 public class NGODirectory {
+
     private ArrayList<NGO> ngodirectory;
 
     public NGODirectory() {
-    ngodirectory= new ArrayList<>();
+        ngodirectory = new ArrayList<>();
     }
 
     public ArrayList<NGO> getNgodirectory() {
@@ -24,16 +25,17 @@ public class NGODirectory {
     public void setNgodirectory(ArrayList<NGO> ngodirectory) {
         this.ngodirectory = ngodirectory;
     }
+
     //add a NGO
-    public NGO addNGO(){
-        NGO ngo =new NGO();
+    public NGO addNGO() {
+        NGO ngo = new NGO();
         ngodirectory.add(ngo);
         return ngo;
     }
-    //remove a NGO
-    public void removeNGO(NGO ngo){
-        ngodirectory.remove(ngo);   
-    
-}
-}
 
+    //remove a NGO
+    public void removeNGO(NGO ngo) {
+        ngodirectory.remove(ngo);
+
+    }
+}

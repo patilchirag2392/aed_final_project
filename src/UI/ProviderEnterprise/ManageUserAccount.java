@@ -4,7 +4,6 @@
  */
 package UI.ProviderEnterprise;
 
-
 import Business.Ecosystem;
 import Business.Employee.Employee;
 import Business.Enterprise.Enterprise;
@@ -30,10 +29,11 @@ public class ManageUserAccount extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    public ManageUserAccount(JPanel userProcessContainer,Enterprise enterprise) {
-        initComponents();   
-        this.userProcessContainer=userProcessContainer;
-        this.enterprise=enterprise;
+
+    public ManageUserAccount(JPanel userProcessContainer, Enterprise enterprise) {
+        initComponents();
+        this.userProcessContainer = userProcessContainer;
+        this.enterprise = enterprise;
         displayCombo();
         selectCombo();
 
@@ -46,25 +46,26 @@ public class ManageUserAccount extends javax.swing.JPanel {
             comboOrg.addItem(organization);
         }
     }
-    
-    public void populateComboEmployee(Organization organization){
+
+    public void populateComboEmployee(Organization organization) {
         comboEmp.removeAllItems();
-        
-        for (Employee employee : organization.getEmployeeDirectory().getEmplist()){
+
+        for (Employee employee : organization.getEmployeeDirectory().getEmplist()) {
             comboEmp.addItem(employee);
         }
     }
+
     //populate respective roles
-    private void populateComboRole(Enterprise e){
+    private void populateComboRole(Enterprise e) {
         comboRole.removeAllItems();
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if(organization instanceof ProviderOrganization){
+        if (organization instanceof ProviderOrganization) {
             comboRole.addItem(new ProviderManagerRole());
-           
+
         }
-      
+
     }
-    
+
     public void selectCombo() {
 
         DefaultTableModel model = (DefaultTableModel) tblUser.getModel();
@@ -313,17 +314,17 @@ public class ManageUserAccount extends javax.swing.JPanel {
 
     private void addbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addbtnActionPerformed
         // TODO add your handling code here:
-        if(uname.getText().isEmpty()|| pword.getText().isEmpty()){
-            JOptionPane.showMessageDialog(null,"FIELD CANNOT BE EMPTY");
-        }else{
+        if (uname.getText().isEmpty() || pword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "FIELD CANNOT BE EMPTY");
+        } else {
             String userName = uname.getText();
             String password = pword.getText();
-            if(Ecosystem.checkIfUsernameIsUnique(userName)){
+            if (Ecosystem.checkIfUsernameIsUnique(userName)) {
                 Organization organization = (Organization) comboOrg.getSelectedItem();
                 Employee employee = (Employee) comboEmp.getSelectedItem();
                 Role role = (Role) comboRole.getSelectedItem();
-                if (organization instanceof ProviderOrganization){
-                    Provider p= new Provider();
+                if (organization instanceof ProviderOrganization) {
+                    Provider p = new Provider();
 
                     p.setS_name(employee.getempName());
                     ((ProviderOrganization) organization).getProviderList().getProviderList().add(p);
@@ -333,8 +334,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
                 selectCombo();
                 uname.setText("");
                 pword.setText("");
-            }
-            else{
+            } else {
                 JOptionPane.showMessageDialog(null, "Enter unique username", "Warning", JOptionPane.WARNING_MESSAGE);
             }
         }
@@ -343,7 +343,7 @@ public class ManageUserAccount extends javax.swing.JPanel {
     private void comboOrgActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboOrgActionPerformed
         // TODO add your handling code here:
         Organization organization = (Organization) comboOrg.getSelectedItem();
-        if (organization != null){
+        if (organization != null) {
             populateComboEmployee(organization);
             populateComboRole(enterprise);
         }

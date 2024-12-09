@@ -91,6 +91,8 @@ public class ManageEmployee extends javax.swing.JPanel {
         comboOrg = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(204, 255, 204));
+
         jPanel2.setBackground(new java.awt.Color(204, 255, 204));
 
         jPanel3.setBackground(new java.awt.Color(0, 153, 204));

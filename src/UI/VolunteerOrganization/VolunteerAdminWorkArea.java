@@ -9,7 +9,6 @@ import javax.swing.JPanel;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-
 /**
  *
  * @author SUJAL DUSANE
@@ -21,12 +20,12 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
      */
     private JPanel userProcessContainer;
     private Enterprise enterprise;
-    
-    public VolunteerAdminWorkArea(JPanel userProcessContainer,Enterprise enterprise) {
+
+    public VolunteerAdminWorkArea(JPanel userProcessContainer, Enterprise enterprise) {
         initComponents();
-        this.enterprise=enterprise;
-        this.userProcessContainer=userProcessContainer;
-       
+        this.enterprise = enterprise;
+        this.userProcessContainer = userProcessContainer;
+
     }
 
     /**
@@ -180,7 +179,7 @@ public class VolunteerAdminWorkArea extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 757, Short.MAX_VALUE)
+            .addGap(0, 742, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

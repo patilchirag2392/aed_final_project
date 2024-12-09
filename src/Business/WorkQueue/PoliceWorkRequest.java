@@ -9,15 +9,16 @@ package Business.WorkQueue;
  *
  * @author SUJAL DUSANE
  */
-public class PoliceWorkRequest extends WorkRequest{
+public class PoliceWorkRequest extends WorkRequest {
+
     private String description;
     private boolean add;
     private String location;
-    
+
     public PoliceWorkRequest() {
-        
+
         add = false;
-        
+
     }
 
     public String getDescription() {

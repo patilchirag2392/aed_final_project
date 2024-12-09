@@ -111,8 +111,6 @@ public class CommunityAdminWorkArea extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Adelle Sans Devanagari", 0, 36)); // NOI18N
         jLabel2.setText(" You're logged in as Community Admin");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(315, 127, 746, -1));
-
-        jLabel3.setText("jLabel3");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(268, 306, 373, 339));
     }// </editor-fold>//GEN-END:initComponents
 

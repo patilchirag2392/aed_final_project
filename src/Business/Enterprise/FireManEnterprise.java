@@ -13,13 +13,15 @@ import java.util.HashSet;
  *
  * @author SUJAL DUSANE
  */
-public class FireManEnterprise extends Enterprise{
-    public FireManEnterprise(String name){
-        super(name,Enterprise.EnterpriseType.FireMan);
+public class FireManEnterprise extends Enterprise {
+
+    public FireManEnterprise(String name) {
+        super(name, Enterprise.EnterpriseType.FireMan);
     }
+
     //hash map to for Fire Man role addition
     @Override
-    public HashSet<Role> getSupportedRole(){
+    public HashSet<Role> getSupportedRole() {
         role.add(new FireManRole());
         return role;
     }
